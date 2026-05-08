@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy &mdash; DeenLog</title>
-<meta name="description" content="DeenLog privacy policy. Local-first storage, no accounts, no analytics. Optional location for prayer times.">
+<meta name="description" content="DeenLog privacy policy. Local-first storage, no accounts, no analytics. GDPR-compliant.">
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)">
 <meta name="referrer" content="no-referrer">
@@ -58,9 +58,11 @@ body {
 span.de, a.de { display: none; }
 .lang-de span.de, .lang-de a.de { display: inline; }
 .lang-de span.en, .lang-de a.en { display: none; }
-p.de, div.de, article.de { display: none; }
-.lang-de p.de, .lang-de div.de, .lang-de article.de { display: block; }
-.lang-de p.en, .lang-de div.en, .lang-de article.en { display: none; }
+p.de, div.de, article.de, dl.de, ul.de { display: none; }
+.lang-de p.de, .lang-de div.de, .lang-de article.de, .lang-de dl.de, .lang-de ul.de { display: block; }
+.lang-de p.en, .lang-de div.en, .lang-de article.en, .lang-de dl.en, .lang-de ul.en { display: none; }
+dl.en { display: block; }
+ul.en { display: block; }
 
 /* ── Language Toggle ── */
 .lang-toggle {
@@ -125,6 +127,7 @@ p.de, div.de, article.de { display: none; }
   margin-bottom: 10px;
 }
 .policy-section p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+.policy-section p + p { margin-top: 12px; }
 .policy-section a {
   color: var(--accent); text-decoration: underline;
   text-decoration-color: rgba(24, 24, 24, 0.25);
@@ -132,6 +135,68 @@ p.de, div.de, article.de { display: none; }
   transition: text-decoration-color 0.2s ease;
 }
 .policy-section a:hover { text-decoration-color: var(--accent); }
+
+/* ── Lists inside policy sections ── */
+.policy-section ul,
+.policy-section ol {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 8px 0 0 0;
+  padding-left: 22px;
+}
+.policy-section li { margin-bottom: 4px; }
+.policy-section li strong { color: var(--text); font-weight: 600; }
+
+/* ── Definition lists (legal bases, rights) ── */
+.policy-section dl {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 18px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.policy-section dt {
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.policy-section dd { margin: 0; }
+
+/* Address card */
+.address-card {
+  background: var(--surface-warm);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.address-card .label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+/* TODO / placeholder marker */
+.placeholder {
+  display: inline-block;
+  background: rgba(255, 220, 90, 0.45);
+  border: 1px dashed rgba(120, 90, 0, 0.6);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: rgba(80, 60, 0, 0.95);
+}
 
 /* ── Footer ── */
 footer {
@@ -156,6 +221,8 @@ footer {
   .container { padding: 0 20px; }
   .back { margin-top: 40px; margin-bottom: 32px; }
   .page-header h1 { font-size: 28px; }
+  .policy-section dl { grid-template-columns: 1fr; gap: 4px 0; }
+  .policy-section dt { margin-top: 8px; }
   .footer-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
   .footer-sep { display: none; }
 }
@@ -185,123 +252,349 @@ footer {
     Zur&uuml;ck zu DeenLog
   </a>
 
-  <!-- English Version -->
+  <!-- ============================================================ -->
+  <!-- ENGLISH VERSION                                              -->
+  <!-- ============================================================ -->
   <article class="en">
     <header class="page-header">
       <h1>Privacy Policy</h1>
       <p class="updated">Last updated: May 8, 2026</p>
     </header>
 
-    <p class="intro">DeenLog is an iOS app for daily Islamic practice (Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting) along with supplements, habits, and todos. Your privacy is treated as a default, not a feature.</p>
+    <p class="intro">DeenLog is an iOS app for daily Islamic practice (Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting) along with supplements, habits, and todos. Your privacy is treated as a default, not a feature. This policy describes how the website at <code>73sero.github.io/deenlog-website</code> and the iOS app handle your data.</p>
 
+    <!-- ─── 1. CONTROLLER ─── -->
     <div class="policy-section">
-      <h2>Data Storage</h2>
+      <h2>1 &middot; Controller (Art. 4(7) GDPR)</h2>
+      <p>The controller responsible for the processing of personal data on this website and through the iOS app is:</p>
+      <div class="address-card">
+        <span class="label">Controller</span>
+        Serdar Saglam<br>
+        <span class="placeholder">[Street and house number — please fill in]</span><br>
+        <span class="placeholder">[Postcode and city — please fill in]</span><br>
+        Germany<br>
+        Email: <a href="#" id="ctrl-contact-en">loading&hellip;</a>
+      </div>
+      <p>This is a non-commercial personal project. The free iOS app is distributed via the Apple App Store under an individual Apple Developer account.</p>
+    </div>
+
+    <!-- ─── 2. WEBSITE: HOSTING & SERVER LOGS ─── -->
+    <div class="policy-section">
+      <h2>2 &middot; Website Hosting &amp; Server Logs</h2>
+      <p>This website is hosted on <strong>GitHub Pages</strong>, a service provided by GitHub, Inc., 88 Colin P. Kelly Jr Street, San Francisco, CA 94107, USA. When you visit any page, GitHub&rsquo;s servers automatically log technical information needed to deliver the page and protect against abuse:</p>
+      <ul>
+        <li>Your IP address</li>
+        <li>Date and time of the request</li>
+        <li>The URL you accessed</li>
+        <li>Browser type and operating system (User-Agent)</li>
+        <li>The referring URL, if any</li>
+      </ul>
+      <p><strong>Legal basis:</strong> Art. 6(1)(f) GDPR &mdash; legitimate interest in operating a stable, secure website.</p>
+      <p><strong>International transfer:</strong> The data is processed in the United States. GitHub, Inc. is certified under the EU&ndash;U.S. Data Privacy Framework, which the European Commission has recognised as providing an adequate level of protection (Adequacy Decision of 10 July 2023). Standard Contractual Clauses serve as an additional safeguard.</p>
+      <p>We do not have direct access to these server logs and cannot identify individual visitors from them. GitHub&rsquo;s privacy practices are described at <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">docs.github.com/site-policy/privacy-policies</a>.</p>
+    </div>
+
+    <!-- ─── 3. WEBSITE: LOCAL STORAGE ─── -->
+    <div class="policy-section">
+      <h2>3 &middot; Local Storage on This Website</h2>
+      <p>This site uses your browser&rsquo;s local storage for one purpose only: to remember your language choice (English or German) so the toggle persists between visits.</p>
+      <dl>
+        <dt>Storage key</dt><dd><code>deenlog-lang</code></dd>
+        <dt>Stored value</dt><dd><code>en</code> or <code>de</code></dd>
+        <dt>When written</dt><dd>Only when you click the EN or DE button. Initial automatic language detection (from your browser locale) does <strong>not</strong> write to local storage.</dd>
+        <dt>Retention</dt><dd>Until you clear your browser data, or click a different language.</dd>
+        <dt>Recipients</dt><dd>None. Local storage stays on your device.</dd>
+        <dt>Legal basis</dt><dd>Art. 6(1)(a) GDPR (consent, expressed by clicking the toggle); § 25(2) Nr. 2 TTDSG (strictly necessary for the service you actively requested).</dd>
+      </dl>
+      <p>You can clear this at any time via your browser&rsquo;s settings (typically &ldquo;Clear site data&rdquo; or &ldquo;Manage stored data&rdquo;).</p>
+    </div>
+
+    <!-- ─── 4. APP: DATA STORAGE ─── -->
+    <div class="policy-section">
+      <h2>4 &middot; iOS App &mdash; Data Storage</h2>
       <p>Your tracking data &mdash; salah logs, adhkar &amp; dhikr counts, Quran khatm progress, fasting marks, supplement intakes, habits, todos, schedules, notes, progress, and backups &mdash; is stored locally on your device. We do not operate user accounts or analytics servers. We do not collect or store your personal data on our servers.</p>
     </div>
 
+    <!-- ─── 5. APP: NOTIFICATIONS ─── -->
     <div class="policy-section">
-      <h2>Crash Reporting</h2>
-      <p>DeenLog does not use third-party crash reporting or analytics services.</p>
+      <h2>5 &middot; iOS App &mdash; Notifications</h2>
+      <p>If you enable notifications &mdash; salah times, Tahajjud, supplement reminders, todo alerts &mdash; they are scheduled locally on your device by iOS. No notification data is sent to any server.</p>
     </div>
 
+    <!-- ─── 6. APP: CALENDAR EXPORT ─── -->
     <div class="policy-section">
-      <h2>Notifications</h2>
-      <p>If you enable notifications &mdash; salah times, Tahajjud, supplement reminders, todo alerts &mdash; they are scheduled locally on your device. No notification data is sent to any server.</p>
+      <h2>6 &middot; iOS App &mdash; Calendar Export</h2>
+      <p>If you use the calendar export feature, events are written directly to your device&rsquo;s calendar via Apple&rsquo;s EventKit framework. No calendar data is sent to any server we operate.</p>
     </div>
 
+    <!-- ─── 7. APP: PRAYER TIMES & LOCATION ─── -->
     <div class="policy-section">
-      <h2>Calendar Export</h2>
-      <p>If you use the calendar export feature, events are written directly to your device&rsquo;s calendar app. No calendar data is sent to any server.</p>
+      <h2>7 &middot; iOS App &mdash; Prayer Times &amp; Location</h2>
+      <p>If you enable prayer times, DeenLog may ask for location permission. Depending on your settings, approximate coordinates may be sent to one of two third-party services to retrieve prayer times:</p>
+      <ul>
+        <li><strong><a href="https://mawaqit.net/" target="_blank" rel="noopener noreferrer">Mawaqit</a></strong> &mdash; if you select a specific mosque. Operated by Mawaqit, France.</li>
+        <li><strong><a href="https://aladhan.com/" target="_blank" rel="noopener noreferrer">Aladhan</a></strong> &mdash; if you use a calculation method (e.g. Muslim World League, ISNA). Operated by Islamic Network.</li>
+      </ul>
+      <p>These requests are optional, made on demand, and never used for analytics or advertising. <strong>Legal basis:</strong> Art. 6(1)(b) GDPR (performance of the feature you requested) and Art. 6(1)(a) (consent for location access). You can use the app without enabling prayer times at all.</p>
     </div>
 
+    <!-- ─── 8. APP: WIDGETS & APP GROUP ─── -->
     <div class="policy-section">
-      <h2>Prayer Times &amp; Location</h2>
-      <p>If you enable prayer times, DeenLog may ask for location permission. Depending on your settings, approximate coordinates may be sent to <a href="https://mawaqit.net/" target="_blank" rel="noopener noreferrer">Mawaqit</a> (your selected mosque) or <a href="https://aladhan.com/" target="_blank" rel="noopener noreferrer">Aladhan</a> (calculation method) to retrieve prayer times. These requests are optional, made on demand, and never used for analytics or advertising. You can use the app without enabling prayer times at all.</p>
+      <h2>8 &middot; iOS App &mdash; Widgets &amp; App Group</h2>
+      <p>DeenLog uses an iOS App Group to share data with its widgets (Dhikr counter, next prayer, today&rsquo;s habits, Hijri date, next supplement). All shared data stays on your device. Widgets do not make any network requests on their own.</p>
     </div>
 
+    <!-- ─── 9. NO TRACKING / NO ANALYTICS ─── -->
     <div class="policy-section">
-      <h2>Widgets &amp; App Group</h2>
-      <p>DeenLog uses an iOS App Group to share data with its widgets (Dhikr counter, next prayer, today&rsquo;s habits, Hijri date, next supplement). All shared data stays on your device. Widgets do not make any network requests.</p>
+      <h2>9 &middot; No Tracking, No Analytics</h2>
+      <p>Neither the website nor the iOS app uses any of the following:</p>
+      <ul>
+        <li>Third-party advertising SDKs</li>
+        <li>Behavioural or product analytics (Firebase, Amplitude, etc.)</li>
+        <li>Crash reporting services</li>
+        <li>Marketing trackers, pixels, or fingerprinting</li>
+        <li>A/B testing platforms</li>
+      </ul>
+      <p>The only outbound network calls from the iOS app are the optional prayer-time lookups described in &sect; 7.</p>
     </div>
 
+    <!-- ─── 10. LEGAL BASES ─── -->
     <div class="policy-section">
-      <h2>Third Parties</h2>
-      <p>DeenLog does not use third-party advertising SDKs, behavioural analytics, or marketing trackers. The only network calls are the optional prayer-time lookups described above.</p>
+      <h2>10 &middot; Legal Bases (Art. 6(1) GDPR)</h2>
+      <p>Summary of legal bases by processing activity:</p>
+      <dl>
+        <dt>Hosting / server logs</dt><dd>(f) legitimate interest in operating a working, secure website</dd>
+        <dt>Language preference (after click)</dt><dd>(a) consent &middot; § 25 TTDSG strictly necessary</dd>
+        <dt>Email correspondence</dt><dd>(f) legitimate interest in answering your enquiry</dd>
+        <dt>App on-device processing</dt><dd>(b) performance of the contract (the feature you use)</dd>
+        <dt>Optional location for prayer times</dt><dd>(a) consent &middot; (b) performance</dd>
+      </dl>
     </div>
 
+    <!-- ─── 11. RETENTION ─── -->
     <div class="policy-section">
-      <h2>Children&rsquo;s Privacy</h2>
-      <p>DeenLog is not directed at children under 13. We do not knowingly collect data from children.</p>
+      <h2>11 &middot; Retention Periods</h2>
+      <ul>
+        <li><strong>GitHub server logs:</strong> retained per GitHub&rsquo;s policy. We do not retain copies.</li>
+        <li><strong>Local storage <code>deenlog-lang</code>:</strong> until you clear it via your browser.</li>
+        <li><strong>Email correspondence:</strong> until the matter is resolved, or until you ask us to delete it &mdash; whichever comes first.</li>
+        <li><strong>App data on your device:</strong> as long as you keep DeenLog installed. Removed when you uninstall the app or clear its data.</li>
+      </ul>
     </div>
 
+    <!-- ─── 12. YOUR RIGHTS ─── -->
     <div class="policy-section">
-      <h2>Changes to This Policy</h2>
-      <p>If we update this policy, the &ldquo;Last updated&rdquo; date at the top will change. Material changes will be highlighted in app release notes.</p>
+      <h2>12 &middot; Your Rights as a Data Subject</h2>
+      <p>Under the GDPR you have the following rights regarding your personal data:</p>
+      <ul>
+        <li><strong>Right of access</strong> (Art. 15) &mdash; obtain a copy of the data we hold about you</li>
+        <li><strong>Right to rectification</strong> (Art. 16) &mdash; have inaccurate data corrected</li>
+        <li><strong>Right to erasure</strong> (Art. 17) &mdash; &ldquo;right to be forgotten&rdquo;</li>
+        <li><strong>Right to restriction</strong> (Art. 18) &mdash; limit how we process your data</li>
+        <li><strong>Right to data portability</strong> (Art. 20) &mdash; receive your data in a portable format</li>
+        <li><strong>Right to object</strong> (Art. 21) &mdash; object to processing based on legitimate interest</li>
+        <li><strong>Right to withdraw consent</strong> (Art. 7(3)) &mdash; at any time, without affecting prior lawfulness</li>
+      </ul>
+      <p>To exercise any of these rights, contact us by email (see &sect; 1). We respond within one month, as required by Art. 12(3) GDPR.</p>
+      <p>Because most processing happens on your device, the technical exercise of many rights is direct: deleting the app erases all app data; clearing your browser data erases the language preference. We are happy to confirm in writing.</p>
     </div>
 
+    <!-- ─── 13. RIGHT TO COMPLAIN ─── -->
     <div class="policy-section">
-      <h2>Contact</h2>
-      <p>For questions about this privacy policy, contact us at: <a href="#" id="privacy-contact-en">loading&hellip;</a></p>
+      <h2>13 &middot; Right to Lodge a Complaint</h2>
+      <p>You have the right to lodge a complaint with a supervisory authority (Art. 77 GDPR), particularly in the EU member state of your habitual residence, place of work, or place of the alleged infringement.</p>
+      <p>For Germany, the controller&rsquo;s competent state authority is the <a href="https://www.lda.bayern.de/" target="_blank" rel="noopener noreferrer">Bayerisches Landesamt f&uuml;r Datenschutzaufsicht (BayLDA)</a>. A directory of all German state DPAs is available at <a href="https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html" target="_blank" rel="noopener noreferrer">bfdi.bund.de</a>.</p>
+    </div>
+
+    <!-- ─── 14. CHILDREN ─── -->
+    <div class="policy-section">
+      <h2>14 &middot; Children&rsquo;s Privacy</h2>
+      <p>DeenLog is not directed at children under 16. We do not knowingly collect personal data from children. Where consent is required for processing (Art. 8 GDPR), it must be given by the holder of parental responsibility.</p>
+    </div>
+
+    <!-- ─── 15. CHANGES ─── -->
+    <div class="policy-section">
+      <h2>15 &middot; Changes to This Policy</h2>
+      <p>If we update this policy, the &ldquo;Last updated&rdquo; date at the top will change. Material changes will be highlighted in app release notes and on this page.</p>
+    </div>
+
+    <!-- ─── 16. CONTACT ─── -->
+    <div class="policy-section">
+      <h2>16 &middot; Contact</h2>
+      <p>For questions about this privacy policy or to exercise any of the rights described above, contact: <a href="#" id="privacy-contact-en">loading&hellip;</a></p>
     </div>
   </article>
 
-  <!-- German Version -->
+  <!-- ============================================================ -->
+  <!-- DEUTSCHE VERSION                                             -->
+  <!-- ============================================================ -->
   <article class="de">
     <header class="page-header">
       <h1>Datenschutzerkl&auml;rung</h1>
       <p class="updated">Zuletzt aktualisiert: 08.05.2026</p>
     </header>
 
-    <p class="intro">DeenLog ist eine iOS-App f&uuml;r t&auml;gliche islamische Praxis (Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah-Fasten) zusammen mit Supplements, Habits und Todos. Deine Privatsph&auml;re ist hier kein Feature, sondern Voreinstellung.</p>
+    <p class="intro">DeenLog ist eine iOS-App f&uuml;r t&auml;gliche islamische Praxis (Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah-Fasten) zusammen mit Supplements, Habits und Todos. Diese Erkl&auml;rung beschreibt, wie die Website unter <code>73sero.github.io/deenlog-website</code> und die iOS-App mit deinen Daten umgehen.</p>
 
+    <!-- ─── 1. VERANTWORTLICHER ─── -->
     <div class="policy-section">
-      <h2>Datenspeicherung</h2>
+      <h2>1 &middot; Verantwortlicher (Art. 4 Nr. 7 DSGVO)</h2>
+      <p>Verantwortlich f&uuml;r die Verarbeitung personenbezogener Daten auf dieser Website und in der iOS-App ist:</p>
+      <div class="address-card">
+        <span class="label">Verantwortlicher</span>
+        Serdar Saglam<br>
+        <span class="placeholder">[Stra&szlig;e und Hausnummer &mdash; bitte einf&uuml;gen]</span><br>
+        <span class="placeholder">[PLZ und Ort &mdash; bitte einf&uuml;gen]</span><br>
+        Deutschland<br>
+        E-Mail: <a href="#" id="ctrl-contact-de">l&auml;dt&hellip;</a>
+      </div>
+      <p>Dies ist ein nicht-kommerzielles privates Projekt. Die kostenlose iOS-App wird &uuml;ber den Apple App Store unter einem privaten Apple Developer Account vertrieben.</p>
+    </div>
+
+    <!-- ─── 2. HOSTING & SERVER-LOGS ─── -->
+    <div class="policy-section">
+      <h2>2 &middot; Hosting der Website &amp; Server-Logs</h2>
+      <p>Diese Website wird auf <strong>GitHub Pages</strong> gehostet, einem Dienst der GitHub, Inc., 88 Colin P. Kelly Jr Street, San Francisco, CA 94107, USA. Bei jedem Aufruf protokollieren die Server von GitHub automatisch technisch notwendige Informationen, um die Seite auszuliefern und vor Missbrauch zu sch&uuml;tzen:</p>
+      <ul>
+        <li>Deine IP-Adresse</li>
+        <li>Datum und Uhrzeit der Anfrage</li>
+        <li>Die aufgerufene URL</li>
+        <li>Browser-Typ und Betriebssystem (User-Agent)</li>
+        <li>Die verweisende URL (Referrer), falls vorhanden</li>
+      </ul>
+      <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO &mdash; berechtigtes Interesse am Betrieb einer stabilen, sicheren Website.</p>
+      <p><strong>Drittlandtransfer:</strong> Die Verarbeitung findet in den USA statt. GitHub, Inc. ist nach dem EU-U.S. Data Privacy Framework zertifiziert, f&uuml;r das die Europ&auml;ische Kommission ein angemessenes Datenschutzniveau festgestellt hat (Angemessenheitsbeschluss vom 10. Juli 2023). Erg&auml;nzend bestehen Standardvertragsklauseln (SCC).</p>
+      <p>Wir haben keinen direkten Zugriff auf diese Server-Logs und k&ouml;nnen daraus keine einzelnen Besucher identifizieren. Die Datenschutzpraktiken von GitHub findest du unter <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">docs.github.com/site-policy/privacy-policies</a>.</p>
+    </div>
+
+    <!-- ─── 3. LOCAL STORAGE ─── -->
+    <div class="policy-section">
+      <h2>3 &middot; Local Storage auf dieser Website</h2>
+      <p>Diese Seite nutzt den Local Storage deines Browsers ausschlie&szlig;lich zu einem Zweck: deine Sprachwahl (Deutsch oder Englisch) zu speichern, damit der Toggle bei n&auml;chsten Besuchen erhalten bleibt.</p>
+      <dl>
+        <dt>Schl&uuml;ssel</dt><dd><code>deenlog-lang</code></dd>
+        <dt>Wert</dt><dd><code>de</code> oder <code>en</code></dd>
+        <dt>Wann geschrieben</dt><dd>Nur wenn du den EN- oder DE-Button klickst. Die automatische Spracherkennung beim Erstbesuch (anhand deiner Browser-Sprache) schreibt <strong>nicht</strong> in den Local Storage.</dd>
+        <dt>Speicherdauer</dt><dd>Bis du deine Browser-Daten l&ouml;schst oder eine andere Sprache w&auml;hlst.</dd>
+        <dt>Empf&auml;nger</dt><dd>Keine. Local Storage bleibt auf deinem Ger&auml;t.</dd>
+        <dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch Klick auf den Toggle); &sect; 25 Abs. 2 Nr. 2 TTDSG (unbedingt erforderlich f&uuml;r den von dir aktiv gew&uuml;nschten Dienst).</dd>
+      </dl>
+      <p>Du kannst diesen Eintrag jederzeit &uuml;ber die Browser-Einstellungen l&ouml;schen (typischerweise &bdquo;Websitedaten l&ouml;schen&ldquo; oder &bdquo;Gespeicherte Daten verwalten&ldquo;).</p>
+    </div>
+
+    <!-- ─── 4. APP: DATENSPEICHERUNG ─── -->
+    <div class="policy-section">
+      <h2>4 &middot; iOS-App &mdash; Datenspeicherung</h2>
       <p>Deine Trackingdaten &mdash; Salah-Logs, Adhkar- und Dhikr-Z&auml;hlung, Quran-Khatm-Fortschritt, Fasten-Markierungen, Supplement-Einnahmen, Habits, Todos, Zeitpl&auml;ne, Notizen, Fortschritt und Backups &mdash; werden lokal auf deinem Ger&auml;t gespeichert. Wir betreiben keine Nutzerkonten oder Analytics-Server. Wir erheben oder speichern deine pers&ouml;nlichen Daten nicht auf unseren Servern.</p>
     </div>
 
+    <!-- ─── 5. APP: BENACHRICHTIGUNGEN ─── -->
     <div class="policy-section">
-      <h2>Absturzberichte</h2>
-      <p>DeenLog verwendet keine Drittanbieter-Dienste f&uuml;r Absturzberichte oder Analytics.</p>
+      <h2>5 &middot; iOS-App &mdash; Benachrichtigungen</h2>
+      <p>Wenn du Benachrichtigungen aktivierst &mdash; Gebetszeiten, Tahajjud, Supplement-Erinnerungen, Todo-Alarme &mdash; werden diese lokal von iOS auf deinem Ger&auml;t geplant. Es werden keine Benachrichtigungsdaten an einen Server gesendet.</p>
     </div>
 
+    <!-- ─── 6. APP: KALENDER-EXPORT ─── -->
     <div class="policy-section">
-      <h2>Benachrichtigungen</h2>
-      <p>Wenn du Benachrichtigungen aktivierst &mdash; Gebetszeiten, Tahajjud, Supplement-Erinnerungen, Todo-Alarme &mdash; werden diese lokal auf deinem Ger&auml;t geplant. Es werden keine Benachrichtigungsdaten an einen Server gesendet.</p>
+      <h2>6 &middot; iOS-App &mdash; Kalender-Export</h2>
+      <p>Wenn du die Kalender-Export-Funktion nutzt, werden Ereignisse direkt &uuml;ber Apples EventKit-Framework in den Kalender deines Ger&auml;ts geschrieben. Es werden keine Kalenderdaten an von uns betriebene Server gesendet.</p>
     </div>
 
+    <!-- ─── 7. APP: GEBETSZEITEN & STANDORT ─── -->
     <div class="policy-section">
-      <h2>Kalender-Export</h2>
-      <p>Wenn du die Kalender-Export-Funktion nutzt, werden Ereignisse direkt in die Kalender-App deines Ger&auml;ts geschrieben. Es werden keine Kalenderdaten an einen Server gesendet.</p>
+      <h2>7 &middot; iOS-App &mdash; Gebetszeiten &amp; Standort</h2>
+      <p>Wenn du Gebetszeiten aktivierst, kann DeenLog nach Standortzugriff fragen. Je nach Einstellung k&ouml;nnen ungef&auml;hre Koordinaten an einen von zwei externen Diensten gesendet werden, um Gebetszeiten abzurufen:</p>
+      <ul>
+        <li><strong><a href="https://mawaqit.net/" target="_blank" rel="noopener noreferrer">Mawaqit</a></strong> &mdash; wenn du eine bestimmte Moschee w&auml;hlst. Betrieben von Mawaqit, Frankreich.</li>
+        <li><strong><a href="https://aladhan.com/" target="_blank" rel="noopener noreferrer">Aladhan</a></strong> &mdash; wenn du eine Berechnungsmethode w&auml;hlst (z.B. Muslim World League, ISNA). Betrieben vom Islamic Network.</li>
+      </ul>
+      <p>Diese Anfragen sind optional, erfolgen on demand und werden nie f&uuml;r Analytics oder Werbung verwendet. <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Erbringung der von dir gew&uuml;nschten Funktion) sowie lit. a (Einwilligung f&uuml;r Standortzugriff). Du kannst die App auch ohne Gebetszeiten nutzen.</p>
     </div>
 
+    <!-- ─── 8. APP: WIDGETS & APP GROUP ─── -->
     <div class="policy-section">
-      <h2>Gebetszeiten &amp; Standort</h2>
-      <p>Wenn du Gebetszeiten aktivierst, kann DeenLog nach Standortzugriff fragen. Je nach Einstellung k&ouml;nnen ungef&auml;hre Koordinaten an <a href="https://mawaqit.net/" target="_blank" rel="noopener noreferrer">Mawaqit</a> (deine ausgew&auml;hlte Moschee) oder <a href="https://aladhan.com/" target="_blank" rel="noopener noreferrer">Aladhan</a> (Berechnungsmethode) gesendet werden, um Gebetszeiten abzurufen. Diese Anfragen sind optional, erfolgen on demand und werden nie f&uuml;r Analytics oder Werbung verwendet. Du kannst die App auch ohne aktivierte Gebetszeiten benutzen.</p>
+      <h2>8 &middot; iOS-App &mdash; Widgets &amp; App Group</h2>
+      <p>DeenLog nutzt eine iOS App Group, um Daten mit seinen Widgets zu teilen (Dhikr-Counter, n&auml;chstes Gebet, heutige Habits, Hijri-Datum, n&auml;chstes Supplement). Alle geteilten Daten bleiben auf deinem Ger&auml;t. Widgets stellen selbst keine Netzwerk-Anfragen.</p>
     </div>
 
+    <!-- ─── 9. KEIN TRACKING ─── -->
     <div class="policy-section">
-      <h2>Widgets &amp; App Group</h2>
-      <p>DeenLog nutzt eine iOS App Group, um Daten mit seinen Widgets zu teilen (Dhikr-Counter, n&auml;chstes Gebet, heutige Habits, Hijri-Datum, n&auml;chstes Supplement). Alle geteilten Daten bleiben auf deinem Ger&auml;t. Widgets machen keine Netzwerk-Anfragen.</p>
+      <h2>9 &middot; Kein Tracking, keine Analytics</h2>
+      <p>Weder die Website noch die iOS-App nutzen folgendes:</p>
+      <ul>
+        <li>Werbe-SDKs Dritter</li>
+        <li>Verhaltens- oder Produkt-Analytics (Firebase, Amplitude usw.)</li>
+        <li>Crash-Reporting-Dienste</li>
+        <li>Marketing-Tracker, Pixel oder Fingerprinting</li>
+        <li>A/B-Testing-Plattformen</li>
+      </ul>
+      <p>Die einzigen ausgehenden Netzwerk-Anfragen aus der iOS-App sind die optionalen Gebetszeiten-Abfragen aus &sect; 7.</p>
     </div>
 
+    <!-- ─── 10. RECHTSGRUNDLAGEN ─── -->
     <div class="policy-section">
-      <h2>Dritte</h2>
-      <p>DeenLog verwendet keine Drittanbieter-Werbe-SDKs, Verhaltens-Analytics oder Marketing-Tracker. Die einzigen Netzwerk-Anfragen sind die oben beschriebenen optionalen Gebetszeiten-Abfragen.</p>
+      <h2>10 &middot; Rechtsgrundlagen (Art. 6 Abs. 1 DSGVO)</h2>
+      <p>&Uuml;berblick der Rechtsgrundlagen je Verarbeitung:</p>
+      <dl>
+        <dt>Hosting / Server-Logs</dt><dd>lit. f &mdash; berechtigtes Interesse am Betrieb der Website</dd>
+        <dt>Sprachwahl (nach Klick)</dt><dd>lit. a Einwilligung &middot; &sect; 25 TTDSG unbedingt erforderlich</dd>
+        <dt>E-Mail-Korrespondenz</dt><dd>lit. f &mdash; berechtigtes Interesse an der Beantwortung deiner Anfrage</dd>
+        <dt>App on-device-Verarbeitung</dt><dd>lit. b &mdash; Vertragserf&uuml;llung (die von dir genutzte Funktion)</dd>
+        <dt>Optionaler Standort f&uuml;r Gebetszeiten</dt><dd>lit. a Einwilligung &middot; lit. b Vertragserf&uuml;llung</dd>
+      </dl>
     </div>
 
+    <!-- ─── 11. SPEICHERDAUER ─── -->
     <div class="policy-section">
-      <h2>Datenschutz f&uuml;r Kinder</h2>
-      <p>DeenLog richtet sich nicht an Kinder unter 13 Jahren. Wir erheben wissentlich keine Daten von Kindern.</p>
+      <h2>11 &middot; Speicherdauer</h2>
+      <ul>
+        <li><strong>GitHub Server-Logs:</strong> gem&auml;&szlig; GitHubs Richtlinie. Wir behalten keine Kopien.</li>
+        <li><strong>Local Storage <code>deenlog-lang</code>:</strong> bis du ihn &uuml;ber den Browser l&ouml;schst.</li>
+        <li><strong>E-Mail-Korrespondenz:</strong> bis das Anliegen erledigt ist oder du eine L&ouml;schung verlangst &mdash; je nachdem, was zuerst eintritt.</li>
+        <li><strong>App-Daten auf deinem Ger&auml;t:</strong> solange du DeenLog installiert hast. Bei Deinstallation oder Datenl&ouml;schung der App entfernt.</li>
+      </ul>
     </div>
 
+    <!-- ─── 12. BETROFFENENRECHTE ─── -->
     <div class="policy-section">
-      <h2>&Auml;nderungen dieser Erkl&auml;rung</h2>
-      <p>Wenn wir diese Erkl&auml;rung aktualisieren, &auml;ndert sich das &bdquo;Zuletzt aktualisiert&ldquo;-Datum oben. Wesentliche &Auml;nderungen werden in den App-Release-Notes hervorgehoben.</p>
+      <h2>12 &middot; Deine Rechte als betroffene Person</h2>
+      <p>Nach der DSGVO stehen dir folgende Rechte zu:</p>
+      <ul>
+        <li><strong>Auskunftsrecht</strong> (Art. 15) &mdash; Kopie der zu dir gespeicherten Daten</li>
+        <li><strong>Recht auf Berichtigung</strong> (Art. 16) &mdash; Korrektur unrichtiger Daten</li>
+        <li><strong>Recht auf L&ouml;schung</strong> (Art. 17) &mdash; &bdquo;Recht auf Vergessenwerden&ldquo;</li>
+        <li><strong>Recht auf Einschr&auml;nkung</strong> (Art. 18) &mdash; Verarbeitung begrenzen</li>
+        <li><strong>Recht auf Daten&uuml;bertragbarkeit</strong> (Art. 20) &mdash; Daten in einem &uuml;bertragbaren Format</li>
+        <li><strong>Widerspruchsrecht</strong> (Art. 21) &mdash; gegen Verarbeitung auf Basis berechtigten Interesses</li>
+        <li><strong>Widerruf der Einwilligung</strong> (Art. 7 Abs. 3) &mdash; jederzeit, ohne R&uuml;ckwirkung auf die fr&uuml;here Verarbeitung</li>
+      </ul>
+      <p>Zur Aus&uuml;bung dieser Rechte kontaktiere uns per E-Mail (siehe &sect; 1). Wir antworten innerhalb eines Monats, wie es Art. 12 Abs. 3 DSGVO vorsieht.</p>
+      <p>Da der Gro&szlig;teil der Verarbeitung auf deinem Ger&auml;t stattfindet, ist die technische Aus&uuml;bung vieler Rechte direkt: das L&ouml;schen der App entfernt alle App-Daten; das L&ouml;schen der Browser-Daten entfernt die Sprach-Pr&auml;ferenz. Wir best&auml;tigen das gerne schriftlich.</p>
     </div>
 
+    <!-- ─── 13. BESCHWERDERECHT ─── -->
     <div class="policy-section">
-      <h2>Kontakt</h2>
-      <p>Bei Fragen zu dieser Datenschutzerkl&auml;rung kontaktiere uns unter: <a href="#" id="privacy-contact-de">l&auml;dt&hellip;</a></p>
+      <h2>13 &middot; Beschwerderecht bei einer Aufsichtsbeh&ouml;rde</h2>
+      <p>Du hast das Recht, dich bei einer Aufsichtsbeh&ouml;rde zu beschweren (Art. 77 DSGVO), insbesondere im EU-Mitgliedstaat deines gew&ouml;hnlichen Aufenthalts, deines Arbeitsplatzes oder des Ortes des mutma&szlig;lichen Versto&szlig;es.</p>
+      <p>F&uuml;r den Verantwortlichen ist die zust&auml;ndige Landesbeh&ouml;rde das <a href="https://www.lda.bayern.de/" target="_blank" rel="noopener noreferrer">Bayerische Landesamt f&uuml;r Datenschutzaufsicht (BayLDA)</a>. Eine Liste aller Landesdatenschutzbeh&ouml;rden findest du unter <a href="https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html" target="_blank" rel="noopener noreferrer">bfdi.bund.de</a>.</p>
+    </div>
+
+    <!-- ─── 14. KINDER ─── -->
+    <div class="policy-section">
+      <h2>14 &middot; Datenschutz f&uuml;r Kinder</h2>
+      <p>DeenLog richtet sich nicht an Kinder unter 16 Jahren. Wir erheben wissentlich keine personenbezogenen Daten von Kindern. Wo eine Einwilligung erforderlich ist (Art. 8 DSGVO), muss diese durch den Tr&auml;ger der elterlichen Verantwortung erteilt werden.</p>
+    </div>
+
+    <!-- ─── 15. ÄNDERUNGEN ─── -->
+    <div class="policy-section">
+      <h2>15 &middot; &Auml;nderungen dieser Erkl&auml;rung</h2>
+      <p>Wenn wir diese Erkl&auml;rung aktualisieren, &auml;ndert sich das &bdquo;Zuletzt aktualisiert&ldquo;-Datum oben. Wesentliche &Auml;nderungen werden in den App-Release-Notes und auf dieser Seite hervorgehoben.</p>
+    </div>
+
+    <!-- ─── 16. KONTAKT ─── -->
+    <div class="policy-section">
+      <h2>16 &middot; Kontakt</h2>
+      <p>Bei Fragen zu dieser Datenschutzerkl&auml;rung oder zur Aus&uuml;bung der oben genannten Rechte kontaktiere uns unter: <a href="#" id="privacy-contact-de">l&auml;dt&hellip;</a></p>
     </div>
   </article>
 </div>
@@ -312,6 +605,9 @@ footer {
     <div class="footer-links">
       <a href="index.html" class="en">Home</a>
       <a href="index.html" class="de">Startseite</a>
+      <span class="footer-sep" aria-hidden="true">|</span>
+      <a href="impressum.html" class="en">Imprint</a>
+      <a href="impressum.html" class="de">Impressum</a>
       <span class="footer-sep" aria-hidden="true">|</span>
       <a href="#" id="footer-contact-en" class="en">Contact</a>
       <a href="#" id="footer-contact-de" class="de">Kontakt</a>
@@ -330,12 +626,13 @@ footer {
   var em = eu + '@' + ed;
   var ml = 'mailto:' + em;
 
-  var contactIds = ['privacy-contact-en', 'privacy-contact-de', 'footer-contact-en', 'footer-contact-de'];
+  var contactIds = ['privacy-contact-en', 'privacy-contact-de', 'ctrl-contact-en', 'ctrl-contact-de', 'footer-contact-en', 'footer-contact-de'];
   contactIds.forEach(function (id) {
     var el = document.getElementById(id);
     if (el) {
       el.href = ml;
-      if (id.indexOf('privacy') === 0) el.textContent = em;
+      // Show full address inline only for the policy-body links (privacy + ctrl), not footer
+      if (id.indexOf('footer-') !== 0) el.textContent = em;
     }
   });
 
@@ -343,7 +640,7 @@ footer {
   var btnEN = document.getElementById('lang-en');
   var btnDE = document.getElementById('lang-de');
 
-  function setLang(lang) {
+  function setLang(lang, persist) {
     html.setAttribute('lang', lang);
     if (lang === 'de') {
       html.classList.add('lang-de');
@@ -358,24 +655,28 @@ footer {
       btnDE.classList.remove('active');
       btnDE.setAttribute('aria-pressed', 'false');
     }
-    try { localStorage.setItem('deenlog-lang', lang); } catch (e) { /* ignore */ }
+    if (persist) {
+      try { localStorage.setItem('deenlog-lang', lang); } catch (e) { /* ignore */ }
+    }
   }
 
-  btnEN.addEventListener('click', function () { setLang('en'); });
-  btnDE.addEventListener('click', function () { setLang('de'); });
+  btnEN.addEventListener('click', function () { setLang('en', true); });
+  btnDE.addEventListener('click', function () { setLang('de', true); });
 
+  // Initial detection: ?lang= URL param > localStorage > browser locale > EN
+  // No localStorage write on auto-detect (TTDSG § 25)
   var urlLang = null;
   try { urlLang = new URLSearchParams(window.location.search).get('lang'); } catch (e) { /* ignore */ }
   var saved = null;
   try { saved = localStorage.getItem('deenlog-lang'); } catch (e) { /* ignore */ }
 
   if (urlLang === 'en' || urlLang === 'de') {
-    setLang(urlLang);
+    setLang(urlLang, false);
   } else if (saved === 'de' || saved === 'en') {
-    setLang(saved);
+    setLang(saved, false);
   } else {
     var browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-    setLang(browserLang.startsWith('de') ? 'de' : 'en');
+    setLang(browserLang.startsWith('de') ? 'de' : 'en', false);
   }
 })();
 </script>

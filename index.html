@@ -911,6 +911,9 @@ footer .copyright { font-size: 13px; color: var(--text-tertiary); }
       <a href="privacy.html" class="en">Privacy Policy</a>
       <a href="privacy.html" class="de">Datenschutz</a>
       <span class="footer-sep" aria-hidden="true">|</span>
+      <a href="impressum.html" class="en">Imprint</a>
+      <a href="impressum.html" class="de">Impressum</a>
+      <span class="footer-sep" aria-hidden="true">|</span>
       <a href="#" id="contact-link" class="en">Contact</a>
       <a href="#" id="contact-link-de" class="de">Kontakt</a>
     </div>
@@ -937,7 +940,7 @@ footer .copyright { font-size: 13px; color: var(--text-tertiary); }
   var btnEN = document.getElementById('lang-en');
   var btnDE = document.getElementById('lang-de');
 
-  function setLang(lang) {
+  function setLang(lang, persist) {
     html.setAttribute('lang', lang);
     if (lang === 'de') {
       html.classList.add('lang-de');
@@ -958,11 +961,15 @@ footer .copyright { font-size: 13px; color: var(--text-tertiary); }
     var metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', desc);
 
-    try { localStorage.setItem('deenlog-lang', lang); } catch (e) { /* ignore */ }
+    // TTDSG § 25: only write to localStorage when the user explicitly chose,
+    // not on initial auto-detection from browser locale.
+    if (persist) {
+      try { localStorage.setItem('deenlog-lang', lang); } catch (e) { /* ignore */ }
+    }
   }
 
-  btnEN.addEventListener('click', function () { setLang('en'); });
-  btnDE.addEventListener('click', function () { setLang('de'); });
+  btnEN.addEventListener('click', function () { setLang('en', true); });
+  btnDE.addEventListener('click', function () { setLang('de', true); });
 
   // Order: ?lang= URL param > localStorage > browser locale > EN
   var urlLang = null;
@@ -971,12 +978,12 @@ footer .copyright { font-size: 13px; color: var(--text-tertiary); }
   try { saved = localStorage.getItem('deenlog-lang'); } catch (e) { /* ignore */ }
 
   if (urlLang === 'en' || urlLang === 'de') {
-    setLang(urlLang);
+    setLang(urlLang, false);
   } else if (saved === 'de' || saved === 'en') {
-    setLang(saved);
+    setLang(saved, false);
   } else {
     var browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-    setLang(browserLang.startsWith('de') ? 'de' : 'en');
+    setLang(browserLang.startsWith('de') ? 'de' : 'en', false);
   }
 
   // ── Scroll-Triggered Fade-In ──
