@@ -1,239 +1,163 @@
-# Dialed Website Copy
+# DeenLog Website Copy
 
-Marketing copy and page structure for the Dialed landing page (GitHub Pages).
-Single-page site. Dark mode aesthetic. Bilingual EN/DE.
+Marketing copy for the DeenLog landing page (`index.html`). Single-page site, bilingual EN/DE, white-primary aesthetic. Audience: Muslim users wanting a private daily-practice tracker on iOS.
+
+> The source-of-truth is `index.html` itself. This file documents intent and the prose blocks; if anything diverges, the HTML wins.
 
 ---
 
-## 1. Page Structure
+## Positioning
+
+DeenLog is a **private iOS app for daily Islamic practice** — Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting — alongside supplements, habits, and todos. Local-first, no account, no ads, no tracking.
+
+Brand etymology: **Deen** (دين, way of life) + **Log** (English, daily journal). Hybrid Arabic-English compound, lowercase wordmark.
+
+---
+
+## Page Structure
 
 | # | Section | Purpose |
 |---|---------|---------|
-| 1 | **Hero** | App icon, headline, subheadline, hero description, App Store badge |
-| 2 | **Features** | 3 feature blocks covering the core pillars |
-| 3 | **Trust Bar** | Three inline badges (Offline / No Account / No Ads) |
-| 4 | **How It Works** | 3-step quick visual walkthrough |
-| 5 | **CTA** | Final App Store download call-to-action |
-| 6 | **Footer** | Privacy policy, contact, copyright |
+| 1 | **Hero** | Wordmark, headline, tagline, App Store CTA, phone mockup |
+| 2 | **Daily Practice** (pillar) | 6 cards: Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah Fasting |
+| 3 | **And the rest of your day** (companion) | 3 cards: Supplements, Habits, Todos |
+| 4 | **Home Screen / Widgets** | 9 widgets, screenshot-driven |
+| 5 | **Privacy by default** | 5 trust badges |
+| 6 | **Final CTA** | App Store call-to-action |
+| 7 | **Footer** | Privacy, contact, copyright |
 
 ---
 
-## 2. Hero Section
+## Hero
+
+### Headline
+- EN: **Your deen, daily tracked.**
+- DE: **Dein Deen, täglich getrackt.**
+
+### Tagline
+- EN: A private iOS app for Salah, Adhkar, Dhikr, Quran and Tahajjud — alongside your supplements, habits, and todos.
+- DE: Eine private iOS-App für Salah, Adhkar, Dhikr, Quran und Tahajjud — mit deinen Supplements, Habits und Todos.
+
+### CTA
+- Primary state (pre-launch): **Coming soon on the App Store** / **Bald im App Store**
+- Live state (post-launch): **Download on the App Store** / **Im App Store laden**, link to `apps.apple.com/app/deenlog/idXXXXXXXXXX`
+- Sub-line: Free. No account. No tracking. / Kostenlos. Kein Account. Kein Tracking.
+
+---
+
+## Section 2 — Daily Practice (the 6 pillars)
+
+Section overline: **Daily practice** / **Tägliche Praxis**
+Heading: **Your deen, in one place.** / **Dein Deen, an einem Ort.**
+
+| # | Title (EN/DE) | Body |
+|---|---|---|
+| 1 | **Salah & Shuruq** / **Salah & Schuruq** | Prayer times for your location or your chosen mosque, with Shuruq so you never miss the Fajr window. Quiet notifications by salah name. |
+| 2 | **Adhkar** | Adhkar al-Sabah and al-Masaa as guided morning and evening flows. Tap to count, swipe to advance, finish in minutes. |
+| 3 | **Dhikr Counter** / **Dhikr-Counter** | A digital tasbih on your home screen. Tap the widget from the lock screen — the count syncs back into the app. |
+| 4 | **Quran Khatm** / **Quran-Khatm** | Pages-per-day or juz-per-day target with a cumulative khatm counter. The number on your card is the total pages, not just today. |
+| 5 | **Tahajjud** | A separate alarm for the last third of the night, anchored to your Fajr time. Wake up to qiyam, not to a notification storm. |
+| 6 | **Sunnah Fasting** / **Sunnah-Fasten** | Pre-built patterns for Mondays & Thursdays, the Ayyam al-Bid (13–15 of each Hijri month), and Dawud's fast. |
+
+---
+
+## Section 3 — Companion (supplements, habits, todos)
+
+Section overline: **And the rest of your day** / **Und der Rest deines Tages**
+Heading: **Built for your whole life, not just one corner of it.** / **Gebaut für dein ganzes Leben, nicht nur eine Ecke.**
+
+| # | Title | Body |
+|---|---|---|
+| 1 | **Supplements** | Set the schedule once — dose, timing, reminder. Tap to log. Streaks at 7, 30, 66, 100 and 365 days. |
+| 2 | **Habits** | Daily, weekly, or plan-based (gym splits). Abstinence tracker with a running day count. Progress rings and weekly dots. |
+| 3 | **Todos** | Labels, notes, location-based reminders, calendar export. The everyday list, without the bloat. |
+
+---
+
+## Section 4 — Home Screen / Widgets
+
+Section overline: **Home screen** / **Homescreen**
+Heading: **Deen at a glance.** / **Deen auf einen Blick.**
+
+Body:
+- EN: Nine widgets across three sizes. Tap your Dhikr counter from the lock screen. Watch your next salah count down. See your khatm progress on the medium card.
+- DE: Neun Widgets in drei Größen. Tap deinen Dhikr-Counter vom Sperrbildschirm. Sieh den Countdown bis zur nächsten Salah. Verfolge deinen Khatm-Fortschritt auf der mittleren Karte.
+
+Bullet list (EN / DE):
+- **Dhikr counter** — interactive, tap to increment / **Dhikr-Counter** — interaktiv, Tap zählt
+- **Next prayer** — with countdown, on small & medium / **Nächstes Gebet** — mit Countdown, klein & mittel
+- **Today's habits** — large widget, scrollable / **Heutige Habits** — großes Widget, scrollbar
+- **Hijri date** — tiny widget, set-it-and-forget-it / **Hijri-Datum** — winziges Widget, einmal anpinnen
+- **Next supplement** — never miss a dose / **Nächstes Supp** — verpass keine Dosis
+
+Visual: `screens/screen-widgets.png` (1200w from `docs/appstore/screenshots/iphone-67-original/03-widgets.png`).
+
+---
+
+## Section 5 — Privacy / Trust
+
+Section overline: **Privacy by default** / **Privatsphäre by default**
+Heading: **Your 'ibadah is yours. So is your data.** / **Deine 'Ibadah ist deine. Deine Daten auch.**
+
+5 badges:
+
+| Label EN | Label DE | Description EN | Description DE |
+|---|---|---|---|
+| Local-First | Local-First | Tracking data stays on your device | Trackingdaten bleiben auf deinem Gerät |
+| No Account | Kein Account | Nothing to sign up for | Nichts zum Registrieren |
+| No Tracking | Kein Tracking | No analytics, no ad SDKs | Keine Analyse, keine Werbe-SDKs |
+| No Ads, Ever | Keine Werbung | No ads, no upsells, no nag | Keine Anzeigen, kein Upsell, kein Nerven |
+| Backup & Restore | Backup & Restore | Export and import your data anytime | Daten jederzeit exportieren und importieren |
+
+---
+
+## Section 6 — Final CTA
+
+Heading:
+- EN: **Start logging your deen.**
+- DE: **Fang an, deinen Deen zu tracken.**
+
+Lead:
+- EN: Free on the App Store. No account, no ads, no tracking.
+- DE: Kostenlos im App Store. Kein Account, keine Werbung, kein Tracking.
+
+CTA: same as hero (pre-launch ghost, post-launch live link).
+
+---
+
+## Footer
+
+Brand line: **DeenLog**
+
+Links:
+- Privacy Policy / Datenschutz → `privacy.html`
+- Contact / Kontakt → `mailto:serdar.saglam01@icloud.com` (assembled at runtime to defeat scrapers)
+
+Copyright: © 2026 Serdar Saglam. All rights reserved. / © 2026 Serdar Saglam. Alle Rechte vorbehalten.
+
+---
+
+## Meta Tags
 
 ### EN
-
-**Headline:**
-Stop guessing if you took your supplements.
-
-**Subheadline:**
-Dialed -- Supplement & Habit Tracker
-
-**Hero Description:**
-One app for your supplement stack, daily habits, and todos. Tap once, move on. Your data never leaves your device.
+- **Title:** DeenLog — Your deen, daily tracked.
+- **Description:** DeenLog is a private iOS app for daily Islamic practice — Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting — alongside supplements, habits, and todos. Local-first, no account, no ads.
+- **OG Title:** DeenLog — Your deen, daily tracked.
+- **OG Description:** A private iOS app for daily Islamic practice — Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting — plus supplements, habits, and todos.
+- **OG Image Alt:** DeenLog — Your deen, daily tracked. A private iOS app for Salah, Adhkar, Dhikr, Quran, and Tahajjud.
 
 ### DE
+- **Title:** DeenLog — Dein Deen, täglich getrackt.
+- **Description:** DeenLog ist eine private iOS-App für tägliche islamische Praxis — Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah-Fasten — zusammen mit Supplements, Habits und Todos. Local-first, kein Account, keine Werbung.
 
-**Headline:**
-Schluss mit "Hab ich das schon genommen?"
-
-**Subheadline:**
-Dialed -- Supplement & Habit Tracker
-
-**Hero Description:**
-Eine App fuer deine Supplements, Habits und Todos. Einmal tippen, weiter machen. Deine Daten bleiben auf deinem Geraet.
+The `<meta name="description">` tag is updated at runtime by the language toggle JS.
 
 ---
 
-## 3. Feature Sections
-
-### Feature 1: Supplements
-
-#### EN
-
-**Title:** Your stack, on autopilot
-
-**Description:**
-Set up your supplement schedule once -- dosage, timing, reminders. Then just check them off each day. Dialed logs every intake automatically and tracks streaks from 7 days to a full year.
-
-**Bullets:**
-- Custom schedules with timed reminders
-- Dosage snapshots recorded with every check-in
-- Milestone system: 7, 30, 66, 100, and 365-day streaks
-
-#### DE
-
-**Title:** Dein Stack, auf Autopilot
-
-**Description:**
-Richte deinen Supplement-Plan einmal ein -- Dosierung, Zeitpunkt, Erinnerungen. Dann einfach taeglich abhaken. Dialed protokolliert jede Einnahme automatisch und trackt Streaks von 7 Tagen bis zu einem vollen Jahr.
-
-**Bullets:**
-- Individuelle Zeitplaene mit Erinnerungen
-- Dosierungs-Snapshots bei jeder Einnahme
-- Meilenstein-System: 7, 30, 66, 100 und 365-Tage-Streaks
-
----
-
-### Feature 2: Habits
-
-#### EN
-
-**Title:** Habits that fit your week
-
-**Description:**
-Not every habit is daily. Build a gym split across weekdays, set a 3x/week target, or track what you want to stop doing. Prayer times calculate automatically based on your location. Progress rings and weekly dots show where you stand at a glance.
-
-**Bullets:**
-- Daily, weekly, and plan-based habits (e.g., gym splits)
-- Abstinence tracker with running day counter
-- Prayer times with automatic location-based calculation
-- Progress rings and weekly frequency dots
-
-#### DE
-
-**Title:** Habits, die zu deiner Woche passen
-
-**Description:**
-Nicht jeder Habit ist taeglich. Erstelle einen Gym-Split ueber die Woche, setze ein 3x/Woche-Ziel, oder tracke, was du lassen willst. Gebetszeiten berechnen sich automatisch basierend auf deinem Standort. Fortschrittsringe und Wochen-Dots zeigen auf einen Blick, wo du stehst.
-
-**Bullets:**
-- Taegliche, woechentliche und Plan-Habits (z.B. Gym-Split)
-- Abstinenz-Tracker mit laufendem Tages-Counter
-- Gebetszeiten mit automatischer Standort-Berechnung
-- Fortschrittsringe und Wochen-Frequenz-Dots
-
----
-
-### Feature 3: Todos & Organization
-
-#### EN
-
-**Title:** Everything else, handled
-
-**Description:**
-A clean task list for the things that don't repeat. Add labels to group tasks, attach notes, set location-based reminders, or export to your calendar. No complexity, no friction.
-
-**Bullets:**
-- Labels and notes for context
-- Location-based reminders
-- Calendar export
-- Home screen widget for daily overview
-
-#### DE
-
-**Title:** Alles andere, erledigt
-
-**Description:**
-Eine klare Aufgabenliste fuer alles, was sich nicht wiederholt. Nutze Labels zum Gruppieren, haenge Notizen an, setze standortbasierte Erinnerungen oder exportiere in deinen Kalender. Keine Komplexitaet, kein Reibungsverlust.
-
-**Bullets:**
-- Labels und Notizen fuer Kontext
-- Standortbasierte Erinnerungen
-- Kalender-Export
-- Homescreen-Widget fuer die Tagesuebersicht
-
----
-
-## 4. Trust Bar
-
-Three badges displayed inline, centered. Minimal icons, short text.
-
-### EN
-
-| Badge | Text |
-|-------|------|
-| 1 | **Fully Offline** -- Your data stays on your device |
-| 2 | **No Account** -- Nothing to sign up for |
-| 3 | **No Ads, Ever** -- No tracking, no analytics, no monetization of your data |
-
-### DE
-
-| Badge | Text |
-|-------|------|
-| 1 | **Komplett Offline** -- Deine Daten bleiben auf deinem Geraet |
-| 2 | **Kein Account** -- Nichts zum Registrieren |
-| 3 | **Keine Werbung** -- Kein Tracking, keine Analyse, keine Monetarisierung deiner Daten |
-
----
-
-## 5. CTA Section
-
-### EN
-
-**Headline:** Start tracking, not wondering.
-
-**Subtext:** Free on the App Store. No account required.
-
-**Button:** Download on the App Store
-
-### DE
-
-**Headline:** Anfangen zu tracken, statt zu raetseln.
-
-**Subtext:** Kostenlos im App Store. Kein Account noetig.
-
-**Button:** Laden im App Store
-
----
-
-## 6. Footer
-
-### EN
-
-- [Privacy Policy](privacy.html)
-- Contact: serdar.saglam01@icloud.com
-- (c) 2026 Serdar Saglam. All rights reserved.
-
-### DE
-
-- [Datenschutz](privacy.html)
-- Kontakt: serdar.saglam01@icloud.com
-- (c) 2026 Serdar Saglam. Alle Rechte vorbehalten.
-
----
-
-## 7. SEO / Meta Tags
-
-### EN
-
-**Meta Title:**
-Dialed -- Supplement & Habit Tracker for iOS
-
-**Meta Description:**
-Track supplements, habits, and todos in one offline iOS app. No account, no ads. Streaks, reminders, prayer times, and a home screen widget. Your data stays on your device.
-
-**OG Title:**
-Dialed -- Supplement & Habit Tracker
-
-**OG Description:**
-One app for your supplement stack, daily habits, and todos. Fully offline, no account required. Free on the App Store.
-
-**OG Type:** website
-
-**OG Image Alt:**
-Dialed app screenshot showing supplement tracking and habit progress on a dark background
-
-### DE
-
-**Meta Title:**
-Dialed -- Supplement & Habit Tracker fuer iOS
-
-**Meta Description:**
-Tracke Supplements, Habits und Todos in einer offline iOS-App. Kein Account, keine Werbung. Streaks, Erinnerungen, Gebetszeiten und ein Homescreen-Widget. Deine Daten bleiben auf deinem Geraet.
-
-**OG Title:**
-Dialed -- Supplement & Habit Tracker
-
-**OG Description:**
-Eine App fuer deine Supplements, Habits und Todos. Komplett offline, kein Account noetig. Kostenlos im App Store.
-
----
-
-## 8. Implementation Notes
-
-- **Language toggle:** Simple DE/EN switch in top-right corner. Default to browser locale, fall back to EN.
-- **App Store badge:** Use official Apple badge SVGs. Link is placeholder until app ID is assigned. Example: `https://apps.apple.com/app/dialed/idXXXXXXXXXX`
-- **Typography:** SF Pro Display / system font stack (`-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif`)
-- **Colors:** Match existing site -- `#000` background, `#F8FAFC` text, `rgba(255,255,255,0.04)` cards, `rgba(248,250,252,0.5)` muted text
-- **App icon:** Use the actual app icon asset, not an emoji placeholder
-- **Backup/Restore:** Mentioned in trust section context but not a standalone feature block -- it supports the "your data, your control" narrative
+## Implementation Notes
+
+- **Language toggle:** EN/DE button top-right, persists choice via `localStorage('deenlog-lang')`. Defaults to browser locale, falls back to EN.
+- **App Store badge:** Currently in "Coming Soon" ghost state. Two TODO comments mark the swap-in points (hero + final CTA) for when the App Store ID is assigned. Replace `idXXXXXXXXXX` with the real ID and uncomment the live `<a class="cta-button">` block.
+- **Typography:** SF Pro stack (`-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif`).
+- **Wordmark:** The hero uses `screens/app-icon.png` (resized from `docs/brand/DeenLog-4K-Light.png`). The wordmark master is the source-of-truth for all logo placements.
+- **Screenshots:** Pulled from `docs/appstore/screenshots/iphone-67-original/` (raw, uncaptioned) — the captioned `iphone-67/` versions are App Store assets and have marketing text that would clash with the website's own copy.

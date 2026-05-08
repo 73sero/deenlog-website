@@ -3,42 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dialed — Supplement &amp; Habit Tracker for iOS</title>
-<meta name="description" content="Track supplements, habits, and todos in one offline iOS app. No account, no ads. Streaks, reminders, prayer times, and a home screen widget. Your data stays on your device.">
-<meta name="theme-color" content="#000000">
+<title>DeenLog &mdash; Your deen, daily tracked.</title>
+<meta name="description" content="DeenLog is a private iOS app for daily Islamic practice — Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting — alongside supplements, habits, and todos. Local-first, no account, no ads.">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:">
-<meta property="og:title" content="Dialed — Supplement &amp; Habit Tracker">
-<meta property="og:description" content="One app for your supplement stack, daily habits, and todos. Fully offline, no account required. Free on the App Store.">
+
+<meta property="og:title" content="DeenLog &mdash; Your deen, daily tracked.">
+<meta property="og:description" content="A private iOS app for daily Islamic practice — Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting — plus supplements, habits, and todos.">
 <meta property="og:type" content="website">
-<!-- TODO: Replace with absolute URL after deploying to GitHub Pages, e.g. https://73sero.github.io/dialed-website/screens/og-preview.png -->
 <meta property="og:image" content="screens/og-preview.png">
-<meta property="og:image:alt" content="Dialed app screenshot showing supplement tracking and habit progress on a dark background">
-<meta property="og:url" content="https://73sero.github.io/dialed-website/">
-<link rel="canonical" href="https://73sero.github.io/dialed-website/">
-<link rel="icon" type="image/png" href="screens/favicon.png">
+<meta property="og:image:alt" content="DeenLog &mdash; Your deen, daily tracked. A private iOS app for Salah, Adhkar, Dhikr, Quran, and Tahajjud.">
+<meta property="og:url" content="https://73sero.github.io/deenlog-website/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://73sero.github.io/deenlog-website/">
+<link rel="icon" type="image/png" sizes="32x32" href="screens/favicon-32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="screens/favicon-dark-32.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="192x192" href="screens/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="screens/apple-touch-icon.png">
+
 <style>
 /* ── Reset ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ── Custom Properties ── */
+/* ── Custom Properties: white-primary, charcoal text, cream accents ── */
 :root {
-  --bg: #000000;
-  --bg-subtle: rgba(255, 255, 255, 0.02);
-  --surface: rgba(255, 255, 255, 0.06);
-  --surface-hover: rgba(255, 255, 255, 0.09);
-  --surface-active: rgba(255, 255, 255, 0.12);
-  --surface-strong: rgba(255, 255, 255, 0.15);
-  --text: #F8FAFC;
-  --text-secondary: rgba(248, 250, 252, 0.60);
-  --text-tertiary: rgba(248, 250, 252, 0.40);
-  --text-muted: rgba(248, 250, 252, 0.25);
-  --accent: #007AFF;
-  --accent-hover: #339AFF;
-  --success: #34C759;
-  --success-dim: rgba(52, 199, 89, 0.15);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-subtle: rgba(255, 255, 255, 0.04);
+  --bg:               #FFFFFF;
+  --bg-subtle:        #FAFAFA;
+  --surface:          #FFFFFF;
+  --surface-warm:     #F5EFE2;
+  --surface-warm-deep:#EDE4CC;
+  --surface-charcoal: #181818;
+
+  --text:             #181818;
+  --text-secondary:   rgba(24, 24, 24, 0.62);
+  --text-tertiary:    rgba(24, 24, 24, 0.42);
+  --text-muted:       rgba(24, 24, 24, 0.28);
+  --text-on-charcoal: #FAFAFA;
+
+  --accent:           #181818;
+  --accent-warm:      #8A6E3A;
+
+  --border:           rgba(24, 24, 24, 0.10);
+  --border-strong:    rgba(24, 24, 24, 0.16);
+  --border-subtle:    rgba(24, 24, 24, 0.05);
+
+  --shadow-card:      0 1px 2px rgba(24, 24, 24, 0.04), 0 8px 24px rgba(24, 24, 24, 0.06);
+  --shadow-card-hover:0 4px 8px rgba(24, 24, 24, 0.06), 0 16px 40px rgba(24, 24, 24, 0.10);
+  --shadow-phone:     0 30px 80px rgba(24, 24, 24, 0.18), 0 8px 24px rgba(24, 24, 24, 0.08);
 }
 
 /* ── Base ── */
@@ -48,9 +62,7 @@ html {
   scroll-behavior: smooth;
 }
 
-html, body {
-  overflow-x: hidden;
-}
+html, body { overflow-x: hidden; }
 
 body {
   background: var(--bg);
@@ -62,19 +74,8 @@ body {
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
   position: relative;
-}
-
-/* ── Noise Texture Overlay ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── Focus States ── */
@@ -83,10 +84,7 @@ body::before {
   outline-offset: 3px;
   border-radius: 4px;
 }
-
-:focus:not(:focus-visible) {
-  outline: none;
-}
+:focus:not(:focus-visible) { outline: none; }
 
 /* ── Layout ── */
 .container {
@@ -94,95 +92,86 @@ body::before {
   margin: 0 auto;
   padding: 0 24px;
 }
-
-.section {
-  padding: 120px 0;
+.container-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
+.section { padding: 120px 0; }
 
 /* ── Typography ── */
 h1 {
-  font-size: 48px;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1.8px;
+  color: var(--text);
+}
+h2 {
+  font-size: 40px;
   font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
   color: var(--text);
 }
-
-h2 {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  color: var(--text);
-}
-
 h3 {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.2px;
   color: var(--text);
 }
-
 p {
   font-size: 16px;
   line-height: 1.6;
+  color: var(--text-secondary);
 }
-
 .overline {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-tertiary);
 }
-
-.body-sm {
-  font-size: 15px;
-  line-height: 1.5;
+.lead {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--text-secondary);
 }
-
 .caption {
   font-size: 13px;
   font-weight: 500;
   line-height: 1.4;
   letter-spacing: 0.2px;
+  color: var(--text-tertiary);
 }
 
-/* ── Language: class-based approach ── */
+/* ── Language: class-based approach (default = EN) ── */
 .de { display: none; }
 .lang-de .de { display: block; }
 .lang-de .en { display: none; }
 
-/* Inline language spans stay inline */
-h1 .de, h2 .de, h3 .de,
-span.de, a.de,
+/* Inline spans */
+h1 .de, h2 .de, h3 .de, span.de, a.de,
 .footer-links .de,
-.trust-badge-label.de,
-.trust-badge-desc.de {
-  display: none;
-}
+.trust-badge-label.de, .trust-badge-desc.de,
+.cta-pill.de, .feature-tag.de { display: none; }
 
 .lang-de h1 .de, .lang-de h2 .de, .lang-de h3 .de,
 .lang-de span.de, .lang-de a.de,
 .lang-de .footer-links .de,
-.lang-de .trust-badge-label.de,
-.lang-de .trust-badge-desc.de {
-  display: inline;
-}
+.lang-de .trust-badge-label.de, .lang-de .trust-badge-desc.de,
+.lang-de .cta-pill.de, .lang-de .feature-tag.de { display: inline; }
 
 .lang-de h1 .en, .lang-de h2 .en, .lang-de h3 .en,
 .lang-de span.en, .lang-de a.en,
 .lang-de .footer-links .en,
-.lang-de .trust-badge-label.en,
-.lang-de .trust-badge-desc.en {
-  display: none;
-}
+.lang-de .trust-badge-label.en, .lang-de .trust-badge-desc.en,
+.lang-de .cta-pill.en, .lang-de .feature-tag.en { display: none; }
 
-/* Block-level language elements */
-p.de, div.de, article.de { display: none; }
-.lang-de p.de, .lang-de div.de, .lang-de article.de { display: block; }
-.lang-de p.en, .lang-de div.en, .lang-de article.en { display: none; }
+p.de, div.de, article.de, li.de { display: none; }
+.lang-de p.de, .lang-de div.de, .lang-de article.de, .lang-de li.de { display: block; }
+.lang-de p.en, .lang-de div.en, .lang-de article.en, .lang-de li.en { display: none; }
 
 /* ── Language Toggle ── */
 .lang-toggle {
@@ -191,14 +180,14 @@ p.de, div.de, article.de { display: none; }
   right: 20px;
   z-index: 100;
   display: flex;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 2px 8px rgba(24, 24, 24, 0.06);
 }
-
 .lang-toggle button {
   background: none;
   border: none;
@@ -215,120 +204,71 @@ p.de, div.de, article.de { display: none; }
   align-items: center;
   justify-content: center;
 }
-
 .lang-toggle button.active {
-  background: var(--surface-active);
+  background: var(--surface-warm);
   color: var(--text);
 }
-
-.lang-toggle button:hover:not(.active) {
-  color: var(--text-secondary);
-}
+.lang-toggle button:hover:not(.active) { color: var(--text-secondary); }
 
 /* ── Hero ── */
 .hero {
-  padding-top: 80px;
-  padding-bottom: 0;
+  padding: 96px 0 0;
   text-align: center;
   position: relative;
 }
-
-/* Hero radial glow */
+/* Subtle warm glow at top */
 .hero::before {
   content: '';
   position: absolute;
-  top: -120px;
+  top: -180px;
   left: 50%;
   transform: translateX(-50%);
-  width: 800px;
-  height: 600px;
-  background: radial-gradient(ellipse at center, rgba(0, 122, 255, 0.08) 0%, rgba(88, 56, 163, 0.04) 40%, transparent 70%);
+  width: 1200px;
+  height: 700px;
+  background: radial-gradient(ellipse at center, rgba(245, 239, 226, 0.65) 0%, rgba(245, 239, 226, 0.20) 35%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
-.hero-content {
-  animation: heroFadeIn 0.8s ease forwards;
-  position: relative;
-  z-index: 1;
-}
+.hero-content { position: relative; z-index: 1; animation: heroFadeIn 0.8s ease forwards; }
 
-.hero .overline {
-  margin-bottom: 24px;
+.hero-wordmark {
   display: block;
-}
-
-.hero-icon {
-  width: 96px;
-  height: 96px;
-  border-radius: 22px;
-  display: block;
-  margin: 0 auto 24px;
-  font-size: 48px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  margin: 0 auto 36px;
+  width: 200px;
+  height: auto;
+  max-width: 60vw;
 }
 
 .hero h1 {
-  margin-bottom: 8px;
+  margin: 0 auto 20px;
+  max-width: 18ch;
 }
 
-.hero-subtitle {
-  font-size: 18px;
+.hero-tagline {
+  font-size: 19px;
   color: var(--text-secondary);
-  margin-bottom: 16px;
-}
-
-.hero-description {
-  font-size: 16px;
-  color: var(--text-secondary);
-  max-width: 480px;
+  max-width: 580px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .hero-cta {
-  margin-top: 32px;
+  margin-top: 40px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 /* ── CTA Buttons ── */
-/* Ghost / Coming Soon button style */
-.cta-button-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  background: transparent;
-  color: var(--text-secondary);
-  font-family: inherit;
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.2px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  cursor: default;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-}
-
-.cta-button-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-.cta-button-ghost svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  opacity: 0.5;
-}
-
-/* Real CTA button (uncomment when App Store is live) */
 .cta-button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  background: var(--text);
-  color: #000000;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--accent);
+  color: var(--text-on-charcoal);
   font-family: inherit;
   font-size: 17px;
   font-weight: 600;
@@ -337,38 +277,51 @@ p.de, div.de, article.de { display: none; }
   border-radius: 14px;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px rgba(24, 24, 24, 0.18);
 }
+.cta-button:hover { transform: translateY(-1px); opacity: 0.94; box-shadow: 0 12px 28px rgba(24, 24, 24, 0.22); }
+.cta-button:active { transform: translateY(0); }
+.cta-button svg { width: 22px; height: 22px; flex-shrink: 0; }
 
-.cta-button:hover {
-  transform: scale(1.02);
-  opacity: 0.92;
+.cta-button-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  cursor: default;
+  text-decoration: none;
+  transition: border-color 0.25s ease;
 }
+.cta-button-ghost:hover { border-color: rgba(24, 24, 24, 0.28); }
+.cta-button-ghost svg { width: 22px; height: 22px; flex-shrink: 0; opacity: 0.5; }
 
-.cta-button:active {
-  transform: scale(0.98);
-}
-
-.cta-button svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
+.cta-note {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
 }
 
 /* ── Phone Mockup ── */
 .hero-mockup {
-  margin-top: 64px;
-  animation: heroFadeIn 0.8s ease 0.3s forwards;
+  margin-top: 80px;
+  animation: heroFadeIn 0.9s ease 0.25s forwards;
   opacity: 0;
   position: relative;
   z-index: 1;
 }
-
 .phone-wrapper {
   position: relative;
   display: inline-block;
 }
-
 .phone-frame {
   position: relative;
   width: 320px;
@@ -376,12 +329,9 @@ p.de, div.de, article.de { display: none; }
   background: #1C1C1E;
   border-radius: 44px;
   padding: 12px;
-  box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.08),
-    0 25px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-phone);
   margin: 0 auto;
 }
-
 .phone-notch {
   position: absolute;
   top: 16px;
@@ -393,7 +343,6 @@ p.de, div.de, article.de { display: none; }
   border-radius: 14px;
   z-index: 2;
 }
-
 .phone-screen {
   width: 100%;
   height: 100%;
@@ -401,7 +350,6 @@ p.de, div.de, article.de { display: none; }
   overflow: hidden;
   background: #000000;
 }
-
 .phone-screen img {
   width: 100%;
   height: 100%;
@@ -409,29 +357,12 @@ p.de, div.de, article.de { display: none; }
   object-position: top;
 }
 
-/* Phone reflection glow underneath */
-.phone-reflection {
-  position: absolute;
-  bottom: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  height: 120px;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
-  pointer-events: none;
-  filter: blur(20px);
+/* ── Section: pillar (Islamic features) ── */
+.section-pillar {
+  background: var(--bg);
 }
-
-/* ── Features ── */
-.features-header {
-  text-align: center;
-  margin-bottom: 48px;
-}
-
-.features-header .overline {
-  display: block;
-  margin-bottom: 16px;
-}
+.section-pillar .section-header { text-align: center; margin-bottom: 64px; }
+.section-pillar .section-header .overline { display: block; margin-bottom: 14px; }
 
 .features-grid {
   display: grid;
@@ -443,176 +374,177 @@ p.de, div.de, article.de { display: none; }
   padding: 28px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 18px;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
 }
-
 .feature-card:hover {
-  background: var(--surface-hover);
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: var(--border-strong);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-/* Gradient border on hover via pseudo-element */
-.feature-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 17px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
-.feature-card:hover::before {
-  opacity: 1;
+  box-shadow: var(--shadow-card-hover);
 }
 
 .feature-icon {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: var(--surface-active);
+  background: var(--surface-warm);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
-  color: var(--text-secondary);
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.feature-icon svg { width: 22px; height: 22px; }
+
+.feature-card h3 { margin-bottom: 8px; }
+.feature-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+
+.feature-tag {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--surface-warm);
 }
 
-.feature-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-.feature-card h3 {
-  margin-bottom: 8px;
-}
-
-.feature-card p {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* Stagger delays */
-.feature-card:nth-child(1) { transition-delay: 0ms; }
-.feature-card:nth-child(2) { transition-delay: 80ms; }
-.feature-card:nth-child(3) { transition-delay: 160ms; }
-.feature-card:nth-child(4) { transition-delay: 240ms; }
-.feature-card:nth-child(5) { transition-delay: 320ms; }
-.feature-card:nth-child(6) { transition-delay: 400ms; }
-
-/* ── Trust Badges ── */
-.trust-section {
+/* ── Section: companion (3 supporting features) ── */
+.section-companion {
   background: var(--bg-subtle);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
+.section-companion .section-header { text-align: center; margin-bottom: 56px; }
+.section-companion .features-grid { grid-template-columns: repeat(3, 1fr); }
 
-.trust-badges {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  flex-wrap: wrap;
+/* ── Section: widgets showcase ── */
+.section-widgets { background: var(--bg); }
+.widgets-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
 }
-
-.trust-badge {
-  text-align: center;
-  min-width: 120px;
+.widgets-text .overline { display: block; margin-bottom: 14px; }
+.widgets-text h2 { margin-bottom: 20px; }
+.widgets-text p { font-size: 17px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 16px; }
+.widgets-list {
+  list-style: none;
+  margin-top: 24px;
+  display: grid;
+  gap: 10px;
 }
-
-.trust-badge-icon {
-  width: 48px;
-  height: 48px;
+.widgets-list li {
+  font-size: 15px;
+  color: var(--text);
+  padding-left: 26px;
+  position: relative;
+}
+.widgets-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--surface-warm-deep);
+  box-shadow: inset 0 0 0 2px var(--accent-warm);
+}
+.widgets-image {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--surface-warm);
+  border: 1px solid var(--border);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+}
+.widgets-image img {
+  width: 100%;
+  height: auto;
+  display: block;
   border-radius: 14px;
-  background: var(--surface);
+}
+
+/* ── Section: trust ── */
+.section-trust {
+  background: var(--surface-warm);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.section-trust .section-header { text-align: center; margin-bottom: 56px; }
+.trust-badges {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+}
+.trust-badge { text-align: center; }
+.trust-badge-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 12px;
-  color: var(--text-tertiary);
+  margin: 0 auto 14px;
+  color: var(--text);
+  border: 1px solid var(--border);
 }
-
-.trust-badge-icon svg {
-  width: 24px;
-  height: 24px;
-}
-
+.trust-badge-icon svg { width: 24px; height: 24px; }
 .trust-badge-label {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text);
   letter-spacing: 0.2px;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
-
 .trust-badge-desc {
   font-size: 13px;
-  color: var(--text-tertiary);
-  line-height: 1.4;
-  max-width: 180px;
-  margin: 0 auto;
-}
-
-/* ── CTA Section ── */
-.cta-section {
-  text-align: center;
-}
-
-.cta-section h2 {
-  margin-bottom: 12px;
-}
-
-.cta-section .cta-subtext {
-  font-size: 16px;
   color: var(--text-secondary);
-  margin-bottom: 32px;
+  line-height: 1.4;
+  display: block;
 }
+
+/* ── Section: final CTA ── */
+.section-cta-final { background: var(--bg); text-align: center; padding: 100px 0; }
+.section-cta-final h2 { margin-bottom: 16px; }
+.section-cta-final .lead { margin-bottom: 36px; max-width: 580px; margin-left: auto; margin-right: auto; }
 
 /* ── Footer ── */
 footer {
-  padding: 48px 0;
-  border-top: 1px solid var(--border);
+  padding: 56px 0 64px;
+  border-top: 1px solid var(--border-subtle);
   text-align: center;
+  background: var(--bg);
 }
-
-.footer-links {
-  margin-bottom: 16px;
+.footer-brand {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: var(--text);
+  margin-bottom: 18px;
 }
-
+.footer-links { margin-bottom: 18px; }
 .footer-links a {
   display: inline-block;
-  padding: 12px 16px;
-  margin: -12px -4px;
+  padding: 10px 14px;
+  margin: -10px -2px;
   font-size: 14px;
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
-
-.footer-links a:hover {
-  color: var(--text);
-  text-decoration: underline;
-}
-
-.footer-sep {
-  color: var(--text-muted);
-  margin: 0 4px;
-  user-select: none;
-}
-
-footer .copyright {
-  font-size: 13px;
-  color: var(--text-tertiary);
-}
+.footer-links a:hover { color: var(--text); text-decoration: underline; }
+.footer-sep { color: var(--text-muted); margin: 0 4px; user-select: none; }
+footer .copyright { font-size: 13px; color: var(--text-tertiary); }
 
 /* ── Scroll Animation ── */
 .fade-in {
@@ -620,35 +552,23 @@ footer .copyright {
   transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Feature card stagger within fade-in context */
 .fade-in .feature-card {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
-
 .fade-in.visible .feature-card:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
-.fade-in.visible .feature-card:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 80ms; }
-.fade-in.visible .feature-card:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 160ms; }
-.fade-in.visible .feature-card:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 240ms; }
-.fade-in.visible .feature-card:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 320ms; }
-.fade-in.visible .feature-card:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 400ms; }
+.fade-in.visible .feature-card:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 70ms; }
+.fade-in.visible .feature-card:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 140ms; }
+.fade-in.visible .feature-card:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 210ms; }
+.fade-in.visible .feature-card:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 280ms; }
+.fade-in.visible .feature-card:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 350ms; }
 
 @keyframes heroFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Reduced Motion ── */
@@ -658,113 +578,48 @@ footer .copyright {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
-  .fade-in {
-    opacity: 1;
-    transform: none;
-  }
-
-  .fade-in .feature-card {
-    opacity: 1;
-    transform: none;
-  }
-
-  .hero-mockup {
-    opacity: 1;
-  }
-
-  html {
-    scroll-behavior: auto;
-  }
-
-  .phone-frame {
-    transform: none !important;
-  }
+  .fade-in, .fade-in .feature-card { opacity: 1; transform: none; }
+  .hero-mockup { opacity: 1; }
+  html { scroll-behavior: auto; }
 }
 
-/* ── Responsive: Tablet ── */
+/* ── Tablet ── */
 @media (max-width: 1023px) {
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .phone-frame {
-    width: 280px;
-  }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-companion .features-grid { grid-template-columns: repeat(3, 1fr); }
+  .widgets-layout { grid-template-columns: 1fr; gap: 48px; }
+  .trust-badges { grid-template-columns: repeat(3, 1fr); gap: 28px 24px; }
+  .phone-frame { width: 280px; }
 }
 
-/* ── Responsive: Mobile ── */
+/* ── Mobile ── */
 @media (max-width: 639px) {
-  .section {
-    padding: 80px 0;
-  }
+  .section { padding: 80px 0; }
+  .container, .container-narrow { padding: 0 20px; }
 
-  .container {
-    padding: 0 20px;
-  }
+  h1 { font-size: 36px; letter-spacing: -1px; }
+  h2 { font-size: 28px; letter-spacing: -0.6px; }
+  p, .lead { font-size: 15px; }
 
-  h1 {
-    font-size: 36px;
-  }
+  .hero { padding-top: 72px; }
+  .hero::before { width: 600px; height: 500px; top: -120px; }
+  .hero-wordmark { width: 156px; margin-bottom: 28px; }
+  .hero-tagline { font-size: 16px; }
+  .hero-mockup { margin-top: 56px; }
 
-  h2 {
-    font-size: 24px;
-  }
+  .features-grid { grid-template-columns: 1fr; gap: 14px; }
+  .section-companion .features-grid { grid-template-columns: 1fr; gap: 14px; }
+  .section-pillar .section-header,
+  .section-companion .section-header,
+  .section-trust .section-header { margin-bottom: 36px; }
 
-  p {
-    font-size: 15px;
-  }
+  .trust-badges { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
 
-  .hero {
-    padding-top: 60px;
-  }
+  .phone-frame { width: 240px; }
+  .phone-notch { width: 84px; height: 24px; }
 
-  .hero::before {
-    width: 400px;
-    height: 400px;
-    top: -80px;
-  }
-
-  .hero-mockup {
-    margin-top: 48px;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .features-header {
-    margin-bottom: 32px;
-  }
-
-  .trust-badges {
-    gap: 24px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-  }
-
-  .phone-frame {
-    width: 240px;
-  }
-
-  .phone-reflection {
-    width: 200px;
-    height: 80px;
-    bottom: -40px;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-
-  .footer-sep {
-    display: none;
-  }
+  .footer-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .footer-sep { display: none; }
 }
 </style>
 </head>
@@ -776,148 +631,216 @@ footer .copyright {
   <button id="lang-de" aria-label="Auf Deutsch wechseln" aria-pressed="false">DE</button>
 </nav>
 
-<header class="hero">
+<header class="hero" aria-labelledby="hero-headline">
   <div class="container hero-content">
-    <span class="overline">Supplements. Habits. Todos.</span>
+    <img class="hero-wordmark" src="screens/app-icon.png" alt="DeenLog" width="200" height="200">
 
-    <img class="hero-icon" src="screens/app-icon-192.png" alt="Dialed app icon" width="96" height="96">
+    <h1 id="hero-headline">
+      <span class="en">Your deen,<br>daily tracked.</span>
+      <span class="de">Dein Deen,<br>t&auml;glich getrackt.</span>
+    </h1>
 
-    <h1><span class="en">Stop guessing if you<br>took your supplements.</span><span class="de">Schluss mit<br>&bdquo;Hab ich das schon genommen?&ldquo;</span></h1>
-
-    <p class="hero-subtitle en">Dialed &mdash; Supplement &amp; Habit Tracker</p>
-    <p class="hero-subtitle de">Dialed &mdash; Supplement &amp; Habit Tracker</p>
-
-    <p class="hero-description en">One app for your supplement stack, daily habits, and todos. Tap once, move on. Your data never leaves your device.</p>
-    <p class="hero-description de">Eine App f&uuml;r deine Supplements, Habits und Todos. Einmal tippen, weiter machen. Deine Daten bleiben auf deinem Ger&auml;t.</p>
+    <p class="hero-tagline">
+      <span class="en">A private iOS app for Salah, Adhkar, Dhikr, Quran and Tahajjud &mdash; alongside your supplements, habits, and todos.</span>
+      <span class="de">Eine private iOS-App f&uuml;r Salah, Adhkar, Dhikr, Quran und Tahajjud &mdash; mit deinen Supplements, Habits und Todos.</span>
+    </p>
 
     <div class="hero-cta">
-      <!-- TODO: Uncomment after App Store approval and replace idXXXXXXXXXX with real ID:
-      <a class="cta-button" href="https://apps.apple.com/app/dialed/idXXXXXXXXXX" aria-label="Download Dialed on the App Store">
-        <svg width="20" height="24" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.3-81.3-105.9-207.2-105.9-327.5 0-192.8 125.5-295.2 249.1-295.2 65.6 0 120.3 43.1 161.4 43.1 39.2 0 100.2-45.7 174.5-45.7 28.2 0 129.6 2.6 196.5 99.7zM554.1 159.4c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.9 32.4-57.5 83.6-57.5 135.5 0 7.8.6 15.6 1.3 18.1 2.5.6 6.4.6 10.2.6 45.8 0 103.8-30.4 141.9-70.6z"/></svg>
-        <span class="en">Download on the App Store</span>
-        <span class="de">Laden im App Store</span>
-      </a>
-      -->
+      <!-- TODO: Once App Store ID is live, swap to <a class="cta-button" href="https://apps.apple.com/app/deenlog/idXXXXXXXXXX"> -->
       <span class="cta-button-ghost" role="status" aria-label="Coming soon on the App Store">
-        <svg width="20" height="24" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.3-81.3-105.9-207.2-105.9-327.5 0-192.8 125.5-295.2 249.1-295.2 65.6 0 120.3 43.1 161.4 43.1 39.2 0 100.2-45.7 174.5-45.7 28.2 0 129.6 2.6 196.5 99.7zM554.1 159.4c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.9 32.4-57.5 83.6-57.5 135.5 0 7.8.6 15.6 1.3 18.1 2.5.6 6.4.6 10.2.6 45.8 0 103.8-30.4 141.9-70.6z"/></svg>
-        <span class="en">Coming Soon on the App Store</span>
+        <svg viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.3-81.3-105.9-207.2-105.9-327.5 0-192.8 125.5-295.2 249.1-295.2 65.6 0 120.3 43.1 161.4 43.1 39.2 0 100.2-45.7 174.5-45.7 28.2 0 129.6 2.6 196.5 99.7zM554.1 159.4c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.9 32.4-57.5 83.6-57.5 135.5 0 7.8.6 15.6 1.3 18.1 2.5.6 6.4.6 10.2.6 45.8 0 103.8-30.4 141.9-70.6z"/></svg>
+        <span class="en">Coming soon on the App Store</span>
         <span class="de">Bald im App Store</span>
+      </span>
+      <span class="cta-note">
+        <span class="en">Free. No account. No tracking.</span>
+        <span class="de">Kostenlos. Kein Account. Kein Tracking.</span>
       </span>
     </div>
   </div>
 
-  <div class="hero-mockup">
+  <div class="hero-mockup" aria-hidden="false">
     <div class="phone-wrapper">
-      <div class="phone-frame" id="hero-phone" role="img" aria-label="Screenshot of the Dialed app showing the Today view">
+      <div class="phone-frame" id="hero-phone" role="img" aria-label="Screenshot of DeenLog showing today's habits, prayer times, and Dhikr counter">
         <div class="phone-notch"></div>
         <div class="phone-screen">
-          <img src="screens/1-today.png" alt="Dialed app Today view showing supplements, habits, and todos" width="320" height="693">
+          <img src="screens/screen-today.png" alt="DeenLog Today view with prayer times, Dhikr counter, and daily habits" width="640" height="1387">
         </div>
       </div>
-      <div class="phone-reflection" aria-hidden="true"></div>
     </div>
   </div>
 </header>
 
 <main>
-  <!-- Features Section -->
-  <section class="section" id="features" aria-labelledby="features-heading">
+  <!-- ── PILLAR: Islamic practice ── -->
+  <section class="section section-pillar" id="practice" aria-labelledby="practice-heading">
     <div class="container">
-      <div class="features-header fade-in">
-        <span class="overline"><span class="en">Features</span><span class="de">Funktionen</span></span>
-        <h2 id="features-heading"><span class="en">Everything you need,<br>nothing you don&rsquo;t.</span><span class="de">Alles was du brauchst,<br>nichts was st&ouml;rt.</span></h2>
+      <div class="section-header fade-in">
+        <span class="overline"><span class="en">Daily practice</span><span class="de">T&auml;gliche Praxis</span></span>
+        <h2 id="practice-heading">
+          <span class="en">Your deen,<br>in one place.</span>
+          <span class="de">Dein Deen,<br>an einem Ort.</span>
+        </h2>
       </div>
 
       <div class="features-grid fade-in">
-        <div class="feature-card">
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3><span class="en">Salah &amp; Shuruq</span><span class="de">Salah &amp; Schuruq</span></h3>
+          <p class="en">Prayer times for your location or your chosen mosque, with Shuruq so you never miss the Fajr window. Quiet notifications by salah name.</p>
+          <p class="de">Gebetszeiten f&uuml;r deinen Standort oder deine Moschee, inklusive Schuruq damit du das Fajr-Fenster nie verpasst. Stille Benachrichtigungen pro Gebet.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h3><span class="en">Adhkar</span><span class="de">Adhkar</span></h3>
+          <p class="en">Adhkar al-Sabah and al-Masaa as guided morning and evening flows. Tap to count, swipe to advance, finish in minutes.</p>
+          <p class="de">Adhkar al-Sabah und al-Masaa als gef&uuml;hrte Morgen- und Abend-Flows. Tap zum Z&auml;hlen, Wischen zum Weiter, in Minuten durch.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+          </div>
+          <h3><span class="en">Dhikr Counter</span><span class="de">Dhikr-Counter</span></h3>
+          <p class="en">A digital tasbih that lives on your home screen. Tap the widget from the lock screen &mdash; the count syncs back into the app.</p>
+          <p class="de">Eine digitale Tasbih auf dem Homescreen. Tap das Widget vom Sperrbildschirm &mdash; die Z&auml;hlung wandert zur&uuml;ck in die App.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h7a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-7a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h8z"/></svg>
+          </div>
+          <h3><span class="en">Quran Khatm</span><span class="de">Quran-Khatm</span></h3>
+          <p class="en">Pages-per-day or juz-per-day target with a cumulative khatm counter. The number on your card is the total pages, not just today.</p>
+          <p class="de">Seiten- oder Juz-Ziel pro Tag, mit kumulativem Khatm-Z&auml;hler. Die Zahl auf der Karte ist deine Gesamtseitenzahl, nicht nur heute.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/><path d="M19 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg>
+          </div>
+          <h3><span class="en">Tahajjud</span><span class="de">Tahajjud</span></h3>
+          <p class="en">A separate alarm for the last third of the night, anchored to your Fajr time. Wake up to qiyam, not to a notification storm.</p>
+          <p class="de">Ein separater Wecker f&uuml;r das letzte Drittel der Nacht, an deine Fajr-Zeit gekoppelt. Aufwachen zum Qiyam, nicht zum Benachrichtigungs-Sturm.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <h3><span class="en">Sunnah Fasting</span><span class="de">Sunnah-Fasten</span></h3>
+          <p class="en">Pre-built patterns for Mondays &amp; Thursdays, the Ayyam al-Bid (13&ndash;15 of each Hijri month), and Dawud&rsquo;s fast.</p>
+          <p class="de">Fertige Muster f&uuml;r Montag &amp; Donnerstag, die Ayyam al-Bid (13.&ndash;15. jedes Hijri-Monats), und das Fasten Dauds.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMPANION: supplements, habits, todos ── -->
+  <section class="section section-companion" id="companion" aria-labelledby="companion-heading">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="overline"><span class="en">And the rest of your day</span><span class="de">Und der Rest deines Tages</span></span>
+        <h2 id="companion-heading">
+          <span class="en">Built for your whole life,<br>not just one corner of it.</span>
+          <span class="de">Gebaut f&uuml;r dein ganzes Leben,<br>nicht nur eine Ecke.</span>
+        </h2>
+      </div>
+
+      <div class="features-grid fade-in">
+
+        <article class="feature-card">
           <div class="feature-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
           </div>
           <h3><span class="en">Supplements</span><span class="de">Supplements</span></h3>
-          <p class="en">Create intake schedules with reminders. Track daily intake with a single tap. Milestone system with streaks from 7 to 365 days.</p>
-          <p class="de">Erstelle Einnahmepl&auml;ne mit Erinnerungen. Tracke die t&auml;gliche Einnahme mit einem Tap. Meilenstein-System mit Streaks von 7 bis 365 Tagen.</p>
-        </div>
+          <p class="en">Set the schedule once &mdash; dose, timing, reminder. Tap to log. Streaks at 7, 30, 66, 100 and 365 days.</p>
+          <p class="de">Plan einmal anlegen &mdash; Dosis, Zeit, Erinnerung. Tap zum Loggen. Streaks bei 7, 30, 66, 100 und 365 Tagen.</p>
+        </article>
 
-        <div class="feature-card">
+        <article class="feature-card">
           <div class="feature-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <h3><span class="en">Habits</span><span class="de">Habits</span></h3>
-          <p class="en">Daily, weekly, and plan habits. Abstinence tracking. Progress rings and weekly dots show where you stand at a glance.</p>
-          <p class="de">T&auml;gliche, w&ouml;chentliche und Plan-Habits. Abstinenz-Tracking. Fortschrittsringe und Wochen-Dots zeigen auf einen Blick, wo du stehst.</p>
-        </div>
+          <p class="en">Daily, weekly, or plan-based (gym splits). Abstinence tracker with a running day count. Progress rings and weekly dots.</p>
+          <p class="de">T&auml;glich, w&ouml;chentlich oder Plan-basiert (Gym-Split). Abstinenz-Tracker mit laufendem Tages-Z&auml;hler. Fortschrittsringe und Wochen-Dots.</p>
+        </article>
 
-        <div class="feature-card">
+        <article class="feature-card">
           <div class="feature-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
           <h3><span class="en">Todos</span><span class="de">Todos</span></h3>
-          <p class="en">Task list with labels, notes, and location-based reminders. Calendar export and home screen widget for your daily overview.</p>
-          <p class="de">Aufgabenliste mit Labels, Notizen und standortbasierten Erinnerungen. Kalender-Export und Homescreen-Widget f&uuml;r die Tages&uuml;bersicht.</p>
-        </div>
+          <p class="en">Labels, notes, location-based reminders, calendar export. The everyday list, without the bloat.</p>
+          <p class="de">Labels, Notizen, standortbasierte Erinnerungen, Kalender-Export. Die Alltagsliste, ohne Ballast.</p>
+        </article>
 
-        <div class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </div>
-          <h3><span class="en">Prayer Times</span><span class="de">Gebetszeiten</span></h3>
-          <p class="en">Automatic calculation based on your location. Integrated into your daily flow, no separate app needed.</p>
-          <p class="de">Automatische Berechnung basierend auf deinem Standort. In deinen Alltag integriert, keine separate App n&ouml;tig.</p>
-        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-          </div>
-          <h3><span class="en">Milestones</span><span class="de">Meilensteine</span></h3>
-          <p class="en">Streak system from 7 to 365 days. Visual progress for every supplement and habit you track.</p>
-          <p class="de">Streak-System von 7 bis 365 Tagen. Visueller Fortschritt f&uuml;r jedes Supplement und jeden Habit.</p>
-        </div>
+  <!-- ── WIDGETS showcase ── -->
+  <section class="section section-widgets" id="widgets" aria-labelledby="widgets-heading">
+    <div class="container">
+      <div class="widgets-layout fade-in">
+        <div class="widgets-text">
+          <span class="overline"><span class="en">Home screen</span><span class="de">Homescreen</span></span>
+          <h2 id="widgets-heading">
+            <span class="en">Deen at a glance.</span>
+            <span class="de">Deen auf einen Blick.</span>
+          </h2>
+          <p class="en">Nine widgets across three sizes. Tap your Dhikr counter from the lock screen. Watch your next salah count down. See your khatm progress on the medium card.</p>
+          <p class="de">Neun Widgets in drei Gr&ouml;&szlig;en. Tap deinen Dhikr-Counter vom Sperrbildschirm. Sieh den Countdown bis zur n&auml;chsten Salah. Verfolge deinen Khatm-Fortschritt auf der mittleren Karte.</p>
 
-        <div class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <h3><span class="en">Privacy First</span><span class="de">Privatsph&auml;re zuerst</span></h3>
-          <p class="en">No servers. No analytics. No account. All data stays on your device. Backup and restore via file.</p>
-          <p class="de">Keine Server. Keine Analyse. Kein Account. Alle Daten bleiben auf deinem Ger&auml;t. Backup &amp; Restore per Datei.</p>
+          <ul class="widgets-list">
+            <li><span class="en"><strong>Dhikr counter</strong> &mdash; interactive, tap to increment</span><span class="de"><strong>Dhikr-Counter</strong> &mdash; interaktiv, Tap z&auml;hlt</span></li>
+            <li><span class="en"><strong>Next prayer</strong> &mdash; with countdown, on small &amp; medium</span><span class="de"><strong>N&auml;chstes Gebet</strong> &mdash; mit Countdown, klein &amp; mittel</span></li>
+            <li><span class="en"><strong>Today&rsquo;s habits</strong> &mdash; large widget, scrollable</span><span class="de"><strong>Heutige Habits</strong> &mdash; gro&szlig;es Widget, scrollbar</span></li>
+            <li><span class="en"><strong>Hijri date</strong> &mdash; tiny widget, set-it-and-forget-it</span><span class="de"><strong>Hijri-Datum</strong> &mdash; winziges Widget, einmal anpinnen</span></li>
+            <li><span class="en"><strong>Next supplement</strong> &mdash; never miss a dose</span><span class="de"><strong>N&auml;chstes Supp</strong> &mdash; verpass keine Dosis</span></li>
+          </ul>
+        </div>
+        <div class="widgets-image">
+          <img src="screens/screen-widgets.png" alt="DeenLog widgets across three sizes &mdash; Dhikr counter, prayer times, and Hijri date on an iPhone home screen" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Trust Badges Section -->
-  <section class="section trust-section" id="trust" aria-labelledby="trust-heading">
-    <div class="container fade-in">
-      <div class="features-header">
-        <span class="overline"><span class="en">Privacy</span><span class="de">Datenschutz</span></span>
-        <h2 id="trust-heading"><span class="en">Your data. Your device.<br>That&rsquo;s it.</span><span class="de">Deine Daten. Dein Ger&auml;t.<br>Das war&rsquo;s.</span></h2>
+  <!-- ── TRUST ── -->
+  <section class="section section-trust" id="privacy" aria-labelledby="trust-heading">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="overline"><span class="en">Privacy by default</span><span class="de">Privatsph&auml;re by default</span></span>
+        <h2 id="trust-heading">
+          <span class="en">Your &lsquo;ibadah is yours.<br>So is your data.</span>
+          <span class="de">Deine &lsquo;Ibadah ist deine.<br>Deine Daten auch.</span>
+        </h2>
       </div>
 
-      <div class="trust-badges">
+      <div class="trust-badges fade-in">
+
         <div class="trust-badge">
           <div class="trust-badge-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
           </div>
-          <span class="trust-badge-label en">100% Offline</span>
-          <span class="trust-badge-label de">Komplett Offline</span>
-          <span class="trust-badge-desc en">Your data stays on your device</span>
-          <span class="trust-badge-desc de">Deine Daten bleiben auf deinem Ger&auml;t</span>
+          <span class="trust-badge-label en">Local-First</span>
+          <span class="trust-badge-label de">Local-First</span>
+          <span class="trust-badge-desc en">Tracking data stays on your device</span>
+          <span class="trust-badge-desc de">Trackingdaten bleiben auf deinem Ger&auml;t</span>
         </div>
 
         <div class="trust-badge">
           <div class="trust-badge-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-          </div>
-          <span class="trust-badge-label en">No Tracking</span>
-          <span class="trust-badge-label de">Kein Tracking</span>
-          <span class="trust-badge-desc en">No analytics, no data collection</span>
-          <span class="trust-badge-desc de">Keine Analyse, keine Datenerhebung</span>
-        </div>
-
-        <div class="trust-badge">
-          <div class="trust-badge-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="2" y1="2" x2="22" y2="22" stroke-width="1.5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
           </div>
           <span class="trust-badge-label en">No Account</span>
           <span class="trust-badge-label de">Kein Account</span>
@@ -927,35 +850,54 @@ footer .copyright {
 
         <div class="trust-badge">
           <div class="trust-badge-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </div>
+          <span class="trust-badge-label en">No Tracking</span>
+          <span class="trust-badge-label de">Kein Tracking</span>
+          <span class="trust-badge-desc en">No analytics, no ad SDKs</span>
+          <span class="trust-badge-desc de">Keine Analyse, keine Werbe-SDKs</span>
+        </div>
+
+        <div class="trust-badge">
+          <div class="trust-badge-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+          </div>
+          <span class="trust-badge-label en">No Ads, Ever</span>
+          <span class="trust-badge-label de">Keine Werbung</span>
+          <span class="trust-badge-desc en">No ads, no upsells, no nag</span>
+          <span class="trust-badge-desc de">Keine Anzeigen, kein Upsell, kein Nerven</span>
+        </div>
+
+        <div class="trust-badge">
+          <div class="trust-badge-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
           <span class="trust-badge-label en">Backup &amp; Restore</span>
           <span class="trust-badge-label de">Backup &amp; Restore</span>
           <span class="trust-badge-desc en">Export and import your data anytime</span>
-          <span class="trust-badge-desc de">Exportiere und importiere jederzeit deine Daten</span>
+          <span class="trust-badge-desc de">Daten jederzeit exportieren und importieren</span>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Final CTA Section -->
-  <section class="section cta-section" id="download" aria-labelledby="cta-heading">
+  <!-- ── FINAL CTA ── -->
+  <section class="section-cta-final" id="download" aria-labelledby="cta-heading">
     <div class="container fade-in">
-      <h2 id="cta-heading"><span class="en">Start tracking, not wondering.</span><span class="de">Anfangen zu tracken,<br>statt zu r&auml;tseln.</span></h2>
+      <h2 id="cta-heading">
+        <span class="en">Start logging your deen.</span>
+        <span class="de">Fang an, deinen Deen zu tracken.</span>
+      </h2>
+      <p class="lead">
+        <span class="en">Free on the App Store. No account, no ads, no tracking.</span>
+        <span class="de">Kostenlos im App Store. Kein Account, keine Werbung, kein Tracking.</span>
+      </p>
 
-      <p class="cta-subtext en">Free on the App Store. No account required.</p>
-      <p class="cta-subtext de">Kostenlos im App Store. Kein Account n&ouml;tig.</p>
-
-      <!-- TODO: Uncomment after App Store approval and replace idXXXXXXXXXX with real ID:
-      <a class="cta-button" href="https://apps.apple.com/app/dialed/idXXXXXXXXXX" aria-label="Download Dialed on the App Store">
-        <svg width="20" height="24" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.3-81.3-105.9-207.2-105.9-327.5 0-192.8 125.5-295.2 249.1-295.2 65.6 0 120.3 43.1 161.4 43.1 39.2 0 100.2-45.7 174.5-45.7 28.2 0 129.6 2.6 196.5 99.7zM554.1 159.4c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.9 32.4-57.5 83.6-57.5 135.5 0 7.8.6 15.6 1.3 18.1 2.5.6 6.4.6 10.2.6 45.8 0 103.8-30.4 141.9-70.6z"/></svg>
-        <span class="en">Download on the App Store</span>
-        <span class="de">Laden im App Store</span>
-      </a>
-      -->
+      <!-- TODO: Once App Store ID is live, swap to <a class="cta-button" href="https://apps.apple.com/app/deenlog/idXXXXXXXXXX"> -->
       <span class="cta-button-ghost" role="status" aria-label="Coming soon on the App Store">
-        <svg width="20" height="24" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.3-81.3-105.9-207.2-105.9-327.5 0-192.8 125.5-295.2 249.1-295.2 65.6 0 120.3 43.1 161.4 43.1 39.2 0 100.2-45.7 174.5-45.7 28.2 0 129.6 2.6 196.5 99.7zM554.1 159.4c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.9 32.4-57.5 83.6-57.5 135.5 0 7.8.6 15.6 1.3 18.1 2.5.6 6.4.6 10.2.6 45.8 0 103.8-30.4 141.9-70.6z"/></svg>
-        <span class="en">Coming Soon on the App Store</span>
+        <svg viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.3-81.3-105.9-207.2-105.9-327.5 0-192.8 125.5-295.2 249.1-295.2 65.6 0 120.3 43.1 161.4 43.1 39.2 0 100.2-45.7 174.5-45.7 28.2 0 129.6 2.6 196.5 99.7zM554.1 159.4c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.9 32.4-57.5 83.6-57.5 135.5 0 7.8.6 15.6 1.3 18.1 2.5.6 6.4.6 10.2.6 45.8 0 103.8-30.4 141.9-70.6z"/></svg>
+        <span class="en">Coming soon on the App Store</span>
         <span class="de">Bald im App Store</span>
       </span>
     </div>
@@ -964,6 +906,7 @@ footer .copyright {
 
 <footer>
   <div class="container">
+    <p class="footer-brand">DeenLog</p>
     <div class="footer-links">
       <a href="privacy.html" class="en">Privacy Policy</a>
       <a href="privacy.html" class="de">Datenschutz</a>
@@ -981,7 +924,6 @@ footer .copyright {
   'use strict';
 
   // ── Email Obfuscation ──
-  // Assemble mailto link at runtime to prevent scraper harvesting
   var eu = 'serdar.saglam01';
   var ed = 'icloud.com';
   var em = eu + '@' + ed;
@@ -1010,23 +952,27 @@ footer .copyright {
       btnDE.classList.remove('active');
       btnDE.setAttribute('aria-pressed', 'false');
     }
-    // Update meta tags for current language
     var desc = lang === 'de'
-      ? 'Tracke Supplements, Habits und Todos in einer offline iOS-App. Kein Account, keine Werbung. Streaks, Erinnerungen, Gebetszeiten und ein Homescreen-Widget.'
-      : 'Track supplements, habits, and todos in one offline iOS app. No account, no ads. Streaks, reminders, prayer times, and a home screen widget.';
+      ? 'DeenLog ist eine private iOS-App für tägliche islamische Praxis — Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah-Fasten — zusammen mit Supplements, Habits und Todos. Local-first, kein Account, keine Werbung.'
+      : 'DeenLog is a private iOS app for daily Islamic practice — Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting — alongside supplements, habits, and todos. Local-first, no account, no ads.';
     var metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', desc);
 
-    try { localStorage.setItem('dialed-lang', lang); } catch (e) { /* ignore */ }
+    try { localStorage.setItem('deenlog-lang', lang); } catch (e) { /* ignore */ }
   }
 
   btnEN.addEventListener('click', function () { setLang('en'); });
   btnDE.addEventListener('click', function () { setLang('de'); });
 
-  // Detect initial language: saved preference > browser locale > EN
+  // Order: ?lang= URL param > localStorage > browser locale > EN
+  var urlLang = null;
+  try { urlLang = new URLSearchParams(window.location.search).get('lang'); } catch (e) { /* ignore */ }
   var saved = null;
-  try { saved = localStorage.getItem('dialed-lang'); } catch (e) { /* ignore */ }
-  if (saved === 'de' || saved === 'en') {
+  try { saved = localStorage.getItem('deenlog-lang'); } catch (e) { /* ignore */ }
+
+  if (urlLang === 'en' || urlLang === 'de') {
+    setLang(urlLang);
+  } else if (saved === 'de' || saved === 'en') {
     setLang(saved);
   } else {
     var browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
@@ -1035,43 +981,25 @@ footer .copyright {
 
   // ── Scroll-Triggered Fade-In ──
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fadeIns = document.querySelectorAll('.fade-in');
 
-  if (!prefersReducedMotion) {
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.fade-in').forEach(function (el) {
-      observer.observe(el);
-    });
+    fadeIns.forEach(function (el) { observer.observe(el); });
+
+    // Safety net: if IO hasn't fired within 1.2s (slow tab, prerender, headless), force-show.
+    setTimeout(function () {
+      fadeIns.forEach(function (el) {
+        if (!el.classList.contains('visible')) el.classList.add('visible');
+      });
+    }, 1200);
   } else {
-    document.querySelectorAll('.fade-in').forEach(function (el) {
-      el.classList.add('visible');
-    });
-  }
-
-  // ── Subtle Parallax on Hero Mockup ──
-  if (!prefersReducedMotion) {
-    var phone = document.getElementById('hero-phone');
-    if (phone) {
-      var ticking = false;
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          window.requestAnimationFrame(function () {
-            var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-            // Very subtle: 2-3px of movement over the first 600px of scroll
-            var offset = Math.min(scrollY * 0.004, 3);
-            phone.style.transform = 'translateY(' + offset + 'px)';
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-    }
+    fadeIns.forEach(function (el) { el.classList.add('visible'); });
   }
 })();
 </script>

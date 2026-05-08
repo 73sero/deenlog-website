@@ -1,7 +1,7 @@
-# Security Audit Report -- Dialed Marketing Website
+# Security Audit Report -- DeenLog Marketing Website
 
 **Auditor:** Claude (automated static review)
-**Date:** 2026-04-08
+**Date:** 2026-04-08 (revalidated 2026-05-08 post-DeenLog rebrand)
 **Scope:** `docs/website/index.html`, `docs/website/privacy.html`
 **Deployment target:** GitHub Pages (static, no server)
 
@@ -58,7 +58,7 @@ This is not bulletproof against determined scrapers, but it defeats the vast maj
 **Files and lines:**
 - `index.html` lines 635, 778
 
-The CTA links point to `https://apps.apple.com/app/dialed/idXXXXXXXXXX`. This is a non-functional placeholder. It is not a security issue, but deploying it would send users to a dead URL.
+The CTA links point to `https://apps.apple.com/app/deenlog/idXXXXXXXXXX`. This is a non-functional placeholder. It is not a security issue, but deploying it would send users to a dead URL.
 
 There is also a commented-out duplicate block (lines 628-634, 771-777) that will need cleanup.
 
@@ -130,7 +130,7 @@ No referrer policy is set. The browser default (`strict-origin-when-cross-origin
 
 ### Issue 3.1 -- localStorage read is safe but worth noting (PASS, no fix needed)
 
-Both files read `localStorage.getItem('dialed-lang')` (index.html line 838, privacy.html line 413) and compare it strictly against `'de'` or `'en'`. The value is never interpolated into HTML or used in any DOM-writing operation. The comparison is a hardcoded equality check, so even a tampered localStorage value would simply fall through to the browser-locale default. No vulnerability here.
+Both files read `localStorage.getItem('deenlog-lang')` (index.html line 838, privacy.html line 413) and compare it strictly against `'de'` or `'en'`. The value is never interpolated into HTML or used in any DOM-writing operation. The comparison is a hardcoded equality check, so even a tampered localStorage value would simply fall through to the browser-locale default. No vulnerability here.
 
 ---
 
@@ -158,8 +158,8 @@ Both files are fully self-contained. All CSS is inline, all JS is inline, all as
 ### 5.1 -- Privacy policy matches actual site behavior (PASS)
 
 The privacy policy states:
-- All data stored locally -- **Correct.** The website itself stores only `dialed-lang` in localStorage (a UI preference, not personal data).
-- No servers / no data collection -- **Correct.** No outbound requests to any non-GitHub domain.
+- All data stored locally -- **Correct.** The website itself stores only `deenlog-lang` in localStorage (a UI preference, not personal data).
+- No website-side analytics or data collection -- **Correct.** No outbound requests to any non-GitHub domain.
 - No crash reporting / analytics -- **Correct.** No scripts of any kind load from external origins.
 
 The policy is written for the iOS app, not the website, which is fine -- the website collects even less data than the app.
@@ -169,7 +169,7 @@ The policy is written for the iOS app, not the website, which is fine -- the web
 The site targets a German audience (bilingual DE/EN). Under GDPR and the German TTDSG:
 
 - **Cookies:** The site sets no cookies. PASS.
-- **localStorage:** The site writes one key (`dialed-lang`). Under TTDSG section 25, storing information on a user's device requires consent unless it is "strictly necessary" for the service the user explicitly requested. A language preference toggle activated by user click is arguably strictly necessary for the feature the user requested. This is low-risk but could be made airtight by only writing to localStorage after the user explicitly clicks a language button (which is already the case -- the initial `setLang()` call on page load also writes, but this is setting a preference based on browser locale detection, which is standard practice).
+- **localStorage:** The site writes one key (`deenlog-lang`). Under TTDSG section 25, storing information on a user's device requires consent unless it is "strictly necessary" for the service the user explicitly requested. A language preference toggle activated by user click is arguably strictly necessary for the feature the user requested. This is low-risk but could be made airtight by only writing to localStorage after the user explicitly clicks a language button (which is already the case -- the initial `setLang()` call on page load also writes, but this is setting a preference based on browser locale detection, which is standard practice).
 
 - **Impressum (Imprint):** German law (TMG section 5 / DDG section 5) requires a legal notice ("Impressum") on commercial websites. The current site has no Impressum link. If the site is considered commercial (it promotes an app on the App Store), an Impressum is legally required for German-facing deployment.
 

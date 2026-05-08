@@ -3,42 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Dialed</title>
-<meta name="theme-color" content="#000000">
+<title>Privacy Policy &mdash; DeenLog</title>
+<meta name="description" content="DeenLog privacy policy. Local-first storage, no accounts, no analytics. Optional location for prayer times.">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:">
-<link rel="canonical" href="https://73sero.github.io/dialed-website/privacy.html">
-<link rel="icon" type="image/png" href="screens/favicon.png">
+<link rel="canonical" href="https://73sero.github.io/deenlog-website/privacy.html">
+<link rel="icon" type="image/png" sizes="32x32" href="screens/favicon-32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="screens/favicon-dark-32.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="192x192" href="screens/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="screens/apple-touch-icon.png">
 <style>
-/* ── Reset ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ── Custom Properties ── */
 :root {
-  --bg: #000000;
-  --bg-subtle: rgba(255, 255, 255, 0.02);
-  --surface: rgba(255, 255, 255, 0.06);
-  --surface-hover: rgba(255, 255, 255, 0.09);
-  --surface-active: rgba(255, 255, 255, 0.12);
-  --text: #F8FAFC;
-  --text-secondary: rgba(248, 250, 252, 0.60);
-  --text-tertiary: rgba(248, 250, 252, 0.40);
-  --text-muted: rgba(248, 250, 252, 0.25);
-  --accent: #007AFF;
-  --accent-hover: #339AFF;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-subtle: rgba(255, 255, 255, 0.04);
+  --bg:               #FFFFFF;
+  --bg-subtle:        #FAFAFA;
+  --surface-warm:     #F5EFE2;
+  --text:             #181818;
+  --text-secondary:   rgba(24, 24, 24, 0.62);
+  --text-tertiary:    rgba(24, 24, 24, 0.42);
+  --text-muted:       rgba(24, 24, 24, 0.28);
+  --accent:           #181818;
+  --border:           rgba(24, 24, 24, 0.10);
+  --border-subtle:    rgba(24, 24, 24, 0.05);
 }
 
-/* ── Base ── */
-html {
-  font-size: 16px;
-  -webkit-text-size-adjust: 100%;
-}
-
-html, body {
-  overflow-x: hidden;
-}
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+html, body { overflow-x: hidden; }
 
 body {
   background: var(--bg);
@@ -49,51 +42,22 @@ body {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
-  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Noise Texture Overlay ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
 
-/* ── Focus States ── */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
-:focus:not(:focus-visible) {
-  outline: none;
-}
-
-/* ── Layout ── */
-.container {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* ── Language: class-based approach ── */
+/* ── Language ── */
 .de { display: none; }
 .lang-de .de { display: block; }
 .lang-de .en { display: none; }
-
-/* Inline language spans */
 span.de, a.de { display: none; }
 .lang-de span.de, .lang-de a.de { display: inline; }
 .lang-de span.en, .lang-de a.en { display: none; }
-
-/* Block-level language elements */
 p.de, div.de, article.de { display: none; }
 .lang-de p.de, .lang-de div.de, .lang-de article.de { display: block; }
 .lang-de p.en, .lang-de div.en, .lang-de article.en { display: none; }
@@ -105,63 +69,39 @@ p.de, div.de, article.de { display: none; }
   right: 20px;
   z-index: 100;
   display: flex;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 2px 8px rgba(24, 24, 24, 0.06);
 }
-
 .lang-toggle button {
-  background: none;
-  border: none;
+  background: none; border: none;
   color: var(--text-tertiary);
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
+  font-family: inherit; font-size: 13px; font-weight: 600;
   padding: 8px 14px;
   cursor: pointer;
   transition: color 0.2s ease, background 0.2s ease;
-  min-width: 44px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-width: 44px; min-height: 44px;
+  display: flex; align-items: center; justify-content: center;
 }
-
-.lang-toggle button.active {
-  background: var(--surface-active);
-  color: var(--text);
-}
-
-.lang-toggle button:hover:not(.active) {
-  color: var(--text-secondary);
-}
+.lang-toggle button.active { background: var(--surface-warm); color: var(--text); }
+.lang-toggle button:hover:not(.active) { color: var(--text-secondary); }
 
 /* ── Back Link ── */
 .back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 60px;
-  margin-bottom: 40px;
-  font-size: 14px;
-  font-weight: 500;
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 60px; margin-bottom: 40px;
+  font-size: 14px; font-weight: 500;
   color: var(--text-tertiary);
   text-decoration: none;
   transition: color 0.2s ease;
   padding: 12px 0;
 }
-
-.back:hover {
-  color: var(--text);
-}
-
-.back svg {
-  width: 16px;
-  height: 16px;
-}
+.back:hover { color: var(--text); }
+.back svg { width: 16px; height: 16px; }
 
 /* ── Page Header ── */
 .page-header {
@@ -169,130 +109,60 @@ p.de, div.de, article.de { display: none; }
   padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
 }
-
 .page-header h1 {
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  margin-bottom: 8px;
+  font-size: 36px; font-weight: 800; line-height: 1.1;
+  letter-spacing: -1px; margin-bottom: 8px; color: var(--text);
 }
-
-.updated {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-tertiary);
-  letter-spacing: 0.2px;
-}
+.updated { font-size: 13px; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.2px; }
 
 /* ── Content ── */
-.intro {
-  font-size: 16px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 40px;
-}
+.intro { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 40px; }
 
-.policy-section {
-  margin-bottom: 32px;
-}
-
+.policy-section { margin-bottom: 32px; }
 .policy-section h2 {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  color: var(--text-tertiary); text-transform: uppercase;
   margin-bottom: 10px;
 }
-
-.policy-section p {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
+.policy-section p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
 .policy-section a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.2s ease;
+  color: var(--accent); text-decoration: underline;
+  text-decoration-color: rgba(24, 24, 24, 0.25);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s ease;
 }
-
-.policy-section a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
+.policy-section a:hover { text-decoration-color: var(--accent); }
 
 /* ── Footer ── */
 footer {
   padding: 48px 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-subtle);
   text-align: center;
   margin-top: 56px;
 }
-
-.footer-links {
-  margin-bottom: 16px;
-}
-
+.footer-brand { font-size: 16px; font-weight: 800; letter-spacing: -0.4px; color: var(--text); margin-bottom: 14px; }
+.footer-links { margin-bottom: 14px; }
 .footer-links a {
-  display: inline-block;
-  padding: 12px 16px;
-  margin: -12px -4px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s ease;
+  display: inline-block; padding: 10px 14px; margin: -10px -2px;
+  font-size: 14px; color: var(--text-secondary);
+  text-decoration: none; transition: color 0.2s ease;
 }
-
-.footer-links a:hover {
-  color: var(--text);
-  text-decoration: underline;
-}
-
-.footer-sep {
-  color: var(--text-muted);
-  margin: 0 4px;
-  user-select: none;
-}
-
-.copyright {
-  font-size: 13px;
-  color: var(--text-tertiary);
-}
+.footer-links a:hover { color: var(--text); text-decoration: underline; }
+.footer-sep { color: var(--text-muted); margin: 0 4px; user-select: none; }
+.copyright { font-size: 13px; color: var(--text-tertiary); }
 
 /* ── Responsive ── */
 @media (max-width: 639px) {
-  .container {
-    padding: 0 20px;
-  }
-
-  .back {
-    margin-top: 40px;
-    margin-bottom: 32px;
-  }
-
-  .page-header h1 {
-    font-size: 28px;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-
-  .footer-sep {
-    display: none;
-  }
+  .container { padding: 0 20px; }
+  .back { margin-top: 40px; margin-bottom: 32px; }
+  .page-header h1 { font-size: 28px; }
+  .footer-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .footer-sep { display: none; }
 }
 
-/* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
@@ -300,7 +170,6 @@ footer {
 </head>
 <body>
 
-<!-- Language Toggle -->
 <nav class="lang-toggle" role="navigation" aria-label="Language switcher">
   <button id="lang-en" class="active" aria-label="Switch to English" aria-pressed="true">EN</button>
   <button id="lang-de" aria-label="Auf Deutsch wechseln" aria-pressed="false">DE</button>
@@ -309,50 +178,70 @@ footer {
 <div class="container">
   <a href="index.html" class="back en">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13L5 8l5-5"/></svg>
-    Back to Dialed
+    Back to DeenLog
   </a>
   <a href="index.html" class="back de">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13L5 8l5-5"/></svg>
-    Zur&uuml;ck zu Dialed
+    Zur&uuml;ck zu DeenLog
   </a>
 
   <!-- English Version -->
   <article class="en">
     <header class="page-header">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: February 23, 2026</p>
+      <p class="updated">Last updated: May 8, 2026</p>
     </header>
 
-    <p class="intro">Dialed is a supplement and task tracking app. Your privacy is important to us.</p>
+    <p class="intro">DeenLog is an iOS app for daily Islamic practice (Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting) along with supplements, habits, and todos. Your privacy is treated as a default, not a feature.</p>
 
     <div class="policy-section">
       <h2>Data Storage</h2>
-      <p>All your data (supplements, tasks, schedules, notes) is stored locally on your device. We do not operate any servers and do not collect, transmit, or store any of your personal data.</p>
+      <p>Your tracking data &mdash; salah logs, adhkar &amp; dhikr counts, Quran khatm progress, fasting marks, supplement intakes, habits, todos, schedules, notes, progress, and backups &mdash; is stored locally on your device. We do not operate user accounts or analytics servers. We do not collect or store your personal data on our servers.</p>
     </div>
 
     <div class="policy-section">
       <h2>Crash Reporting</h2>
-      <p>We currently do not use third-party crash reporting or analytics services.</p>
+      <p>DeenLog does not use third-party crash reporting or analytics services.</p>
     </div>
 
     <div class="policy-section">
       <h2>Notifications</h2>
-      <p>If you enable notifications, they are scheduled locally on your device. No notification data is sent to any server.</p>
+      <p>If you enable notifications &mdash; salah times, Tahajjud, supplement reminders, todo alerts &mdash; they are scheduled locally on your device. No notification data is sent to any server.</p>
     </div>
 
     <div class="policy-section">
       <h2>Calendar Export</h2>
-      <p>If you use the calendar export feature, events are written directly to your device's calendar app. No calendar data is sent to any server.</p>
+      <p>If you use the calendar export feature, events are written directly to your device&rsquo;s calendar app. No calendar data is sent to any server.</p>
     </div>
 
     <div class="policy-section">
-      <h2>Prayer Times</h2>
-      <p>If you use the prayer times feature, your approximate location is used to calculate prayer times on-device. Location data is not sent to any server.</p>
+      <h2>Prayer Times &amp; Location</h2>
+      <p>If you enable prayer times, DeenLog may ask for location permission. Depending on your settings, approximate coordinates may be sent to <a href="https://mawaqit.net/" target="_blank" rel="noopener noreferrer">Mawaqit</a> (your selected mosque) or <a href="https://aladhan.com/" target="_blank" rel="noopener noreferrer">Aladhan</a> (calculation method) to retrieve prayer times. These requests are optional, made on demand, and never used for analytics or advertising. You can use the app without enabling prayer times at all.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Widgets &amp; App Group</h2>
+      <p>DeenLog uses an iOS App Group to share data with its widgets (Dhikr counter, next prayer, today&rsquo;s habits, Hijri date, next supplement). All shared data stays on your device. Widgets do not make any network requests.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Third Parties</h2>
+      <p>DeenLog does not use third-party advertising SDKs, behavioural analytics, or marketing trackers. The only network calls are the optional prayer-time lookups described above.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Children&rsquo;s Privacy</h2>
+      <p>DeenLog is not directed at children under 13. We do not knowingly collect data from children.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Changes to This Policy</h2>
+      <p>If we update this policy, the &ldquo;Last updated&rdquo; date at the top will change. Material changes will be highlighted in app release notes.</p>
     </div>
 
     <div class="policy-section">
       <h2>Contact</h2>
-      <p>For questions about this privacy policy, contact us at: <a href="#" id="privacy-contact-en">loading...</a></p>
+      <p>For questions about this privacy policy, contact us at: <a href="#" id="privacy-contact-en">loading&hellip;</a></p>
     </div>
   </article>
 
@@ -360,24 +249,24 @@ footer {
   <article class="de">
     <header class="page-header">
       <h1>Datenschutzerkl&auml;rung</h1>
-      <p class="updated">Zuletzt aktualisiert: 23.02.2026</p>
+      <p class="updated">Zuletzt aktualisiert: 08.05.2026</p>
     </header>
 
-    <p class="intro">Dialed ist eine App zur Verfolgung von Supplements und Aufgaben. Deine Privatsph&auml;re ist uns wichtig.</p>
+    <p class="intro">DeenLog ist eine iOS-App f&uuml;r t&auml;gliche islamische Praxis (Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah-Fasten) zusammen mit Supplements, Habits und Todos. Deine Privatsph&auml;re ist hier kein Feature, sondern Voreinstellung.</p>
 
     <div class="policy-section">
       <h2>Datenspeicherung</h2>
-      <p>Alle deine Daten (Supplements, Aufgaben, Zeitpl&auml;ne, Notizen) werden lokal auf deinem Ger&auml;t gespeichert. Wir betreiben keine Server und erheben, &uuml;bertragen oder speichern keine deiner pers&ouml;nlichen Daten.</p>
+      <p>Deine Trackingdaten &mdash; Salah-Logs, Adhkar- und Dhikr-Z&auml;hlung, Quran-Khatm-Fortschritt, Fasten-Markierungen, Supplement-Einnahmen, Habits, Todos, Zeitpl&auml;ne, Notizen, Fortschritt und Backups &mdash; werden lokal auf deinem Ger&auml;t gespeichert. Wir betreiben keine Nutzerkonten oder Analytics-Server. Wir erheben oder speichern deine pers&ouml;nlichen Daten nicht auf unseren Servern.</p>
     </div>
 
     <div class="policy-section">
       <h2>Absturzberichte</h2>
-      <p>Aktuell verwenden wir keine Drittanbieter-Dienste f&uuml;r Absturzberichte oder Analytics.</p>
+      <p>DeenLog verwendet keine Drittanbieter-Dienste f&uuml;r Absturzberichte oder Analytics.</p>
     </div>
 
     <div class="policy-section">
       <h2>Benachrichtigungen</h2>
-      <p>Wenn du Benachrichtigungen aktivierst, werden diese lokal auf deinem Ger&auml;t geplant. Es werden keine Benachrichtigungsdaten an einen Server gesendet.</p>
+      <p>Wenn du Benachrichtigungen aktivierst &mdash; Gebetszeiten, Tahajjud, Supplement-Erinnerungen, Todo-Alarme &mdash; werden diese lokal auf deinem Ger&auml;t geplant. Es werden keine Benachrichtigungsdaten an einen Server gesendet.</p>
     </div>
 
     <div class="policy-section">
@@ -386,19 +275,40 @@ footer {
     </div>
 
     <div class="policy-section">
-      <h2>Gebetszeiten</h2>
-      <p>Wenn du die Gebetszeiten-Funktion nutzt, wird dein ungef&auml;hrer Standort zur Berechnung der Gebetszeiten auf dem Ger&auml;t verwendet. Standortdaten werden nicht an Server gesendet.</p>
+      <h2>Gebetszeiten &amp; Standort</h2>
+      <p>Wenn du Gebetszeiten aktivierst, kann DeenLog nach Standortzugriff fragen. Je nach Einstellung k&ouml;nnen ungef&auml;hre Koordinaten an <a href="https://mawaqit.net/" target="_blank" rel="noopener noreferrer">Mawaqit</a> (deine ausgew&auml;hlte Moschee) oder <a href="https://aladhan.com/" target="_blank" rel="noopener noreferrer">Aladhan</a> (Berechnungsmethode) gesendet werden, um Gebetszeiten abzurufen. Diese Anfragen sind optional, erfolgen on demand und werden nie f&uuml;r Analytics oder Werbung verwendet. Du kannst die App auch ohne aktivierte Gebetszeiten benutzen.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Widgets &amp; App Group</h2>
+      <p>DeenLog nutzt eine iOS App Group, um Daten mit seinen Widgets zu teilen (Dhikr-Counter, n&auml;chstes Gebet, heutige Habits, Hijri-Datum, n&auml;chstes Supplement). Alle geteilten Daten bleiben auf deinem Ger&auml;t. Widgets machen keine Netzwerk-Anfragen.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Dritte</h2>
+      <p>DeenLog verwendet keine Drittanbieter-Werbe-SDKs, Verhaltens-Analytics oder Marketing-Tracker. Die einzigen Netzwerk-Anfragen sind die oben beschriebenen optionalen Gebetszeiten-Abfragen.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Datenschutz f&uuml;r Kinder</h2>
+      <p>DeenLog richtet sich nicht an Kinder unter 13 Jahren. Wir erheben wissentlich keine Daten von Kindern.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>&Auml;nderungen dieser Erkl&auml;rung</h2>
+      <p>Wenn wir diese Erkl&auml;rung aktualisieren, &auml;ndert sich das &bdquo;Zuletzt aktualisiert&ldquo;-Datum oben. Wesentliche &Auml;nderungen werden in den App-Release-Notes hervorgehoben.</p>
     </div>
 
     <div class="policy-section">
       <h2>Kontakt</h2>
-      <p>Bei Fragen zu dieser Datenschutzerkl&auml;rung kontaktiere uns unter: <a href="#" id="privacy-contact-de">loading...</a></p>
+      <p>Bei Fragen zu dieser Datenschutzerkl&auml;rung kontaktiere uns unter: <a href="#" id="privacy-contact-de">l&auml;dt&hellip;</a></p>
     </div>
   </article>
 </div>
 
 <footer>
   <div class="container">
+    <p class="footer-brand">DeenLog</p>
     <div class="footer-links">
       <a href="index.html" class="en">Home</a>
       <a href="index.html" class="de">Startseite</a>
@@ -415,26 +325,20 @@ footer {
 (function () {
   'use strict';
 
-  // ── Email Obfuscation ──
   var eu = 'serdar.saglam01';
   var ed = 'icloud.com';
   var em = eu + '@' + ed;
   var ml = 'mailto:' + em;
 
-  // Set all contact links
   var contactIds = ['privacy-contact-en', 'privacy-contact-de', 'footer-contact-en', 'footer-contact-de'];
   contactIds.forEach(function (id) {
     var el = document.getElementById(id);
     if (el) {
       el.href = ml;
-      // Only set text for inline contact links, not footer
-      if (id.indexOf('privacy') === 0) {
-        el.textContent = em;
-      }
+      if (id.indexOf('privacy') === 0) el.textContent = em;
     }
   });
 
-  // ── Language Toggle ──
   var html = document.documentElement;
   var btnEN = document.getElementById('lang-en');
   var btnDE = document.getElementById('lang-de');
@@ -454,16 +358,20 @@ footer {
       btnDE.classList.remove('active');
       btnDE.setAttribute('aria-pressed', 'false');
     }
-    try { localStorage.setItem('dialed-lang', lang); } catch (e) { /* ignore */ }
+    try { localStorage.setItem('deenlog-lang', lang); } catch (e) { /* ignore */ }
   }
 
   btnEN.addEventListener('click', function () { setLang('en'); });
   btnDE.addEventListener('click', function () { setLang('de'); });
 
-  // Detect initial language: saved preference > browser locale > EN
+  var urlLang = null;
+  try { urlLang = new URLSearchParams(window.location.search).get('lang'); } catch (e) { /* ignore */ }
   var saved = null;
-  try { saved = localStorage.getItem('dialed-lang'); } catch (e) { /* ignore */ }
-  if (saved === 'de' || saved === 'en') {
+  try { saved = localStorage.getItem('deenlog-lang'); } catch (e) { /* ignore */ }
+
+  if (urlLang === 'en' || urlLang === 'de') {
+    setLang(urlLang);
+  } else if (saved === 'de' || saved === 'en') {
     setLang(saved);
   } else {
     var browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
