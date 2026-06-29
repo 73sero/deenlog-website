@@ -258,7 +258,7 @@ footer {
   <article class="en">
     <header class="page-header">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: June 21, 2026</p>
+      <p class="updated">Last updated: June 29, 2026</p>
     </header>
 
     <p class="intro">DeenLog is an iOS app for daily Islamic practice (Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah fasting) along with supplements, habits, and todos. Your privacy is treated as a default, not a feature. This policy describes how the website at <code>deenlog.de</code> and the iOS app handle your data.</p>
@@ -304,7 +304,7 @@ footer {
         <dt>When written</dt><dd>Only when you click the EN or DE button. Initial automatic language detection (from your browser locale) does <strong>not</strong> write to local storage.</dd>
         <dt>Retention</dt><dd>Until you clear your browser data, or click a different language.</dd>
         <dt>Recipients</dt><dd>None. Local storage stays on your device.</dd>
-        <dt>Legal basis</dt><dd>Art. 6(1)(a) GDPR (consent, expressed by clicking the toggle); § 25(2) Nr. 2 TTDSG (strictly necessary for the service you actively requested).</dd>
+        <dt>Legal basis</dt><dd>Art. 6(1)(a) GDPR (consent, expressed by clicking the toggle); § 25(2) No. 2 TDDDG (formerly TTDSG; strictly necessary for the service you actively requested).</dd>
       </dl>
       <p>You can clear this at any time via your browser&rsquo;s settings (typically &ldquo;Clear site data&rdquo; or &ldquo;Manage stored data&rdquo;).</p>
     </div>
@@ -366,7 +366,7 @@ footer {
       <p>Summary of legal bases by processing activity:</p>
       <dl>
         <dt>Hosting / server logs</dt><dd>(f) legitimate interest in operating a working, secure website</dd>
-        <dt>Language preference (after click)</dt><dd>(a) consent &middot; § 25 TTDSG strictly necessary</dd>
+        <dt>Language preference (after click)</dt><dd>(a) consent &middot; § 25 TDDDG strictly necessary</dd>
         <dt>Email correspondence</dt><dd>(f) legitimate interest in answering your enquiry</dd>
         <dt>App on-device processing</dt><dd>(b) performance of the contract (the feature you use)</dd>
         <dt>Optional location for prayer times</dt><dd>(a) consent &middot; (b) performance</dd>
@@ -433,7 +433,7 @@ footer {
   <article class="de">
     <header class="page-header">
       <h1>Datenschutzerkl&auml;rung</h1>
-      <p class="updated">Zuletzt aktualisiert: 21.06.2026</p>
+      <p class="updated">Zuletzt aktualisiert: 29.06.2026</p>
     </header>
 
     <p class="intro">DeenLog ist eine iOS-App f&uuml;r t&auml;gliche islamische Praxis (Salah, Adhkar, Dhikr, Quran, Tahajjud, Sunnah-Fasten) zusammen mit Supplements, Habits und Todos. Diese Erkl&auml;rung beschreibt, wie die Website unter <code>deenlog.de</code> und die iOS-App mit deinen Daten umgehen.</p>
@@ -479,7 +479,7 @@ footer {
         <dt>Wann geschrieben</dt><dd>Nur wenn du den EN- oder DE-Button klickst. Die automatische Spracherkennung beim Erstbesuch (anhand deiner Browser-Sprache) schreibt <strong>nicht</strong> in den Local Storage.</dd>
         <dt>Speicherdauer</dt><dd>Bis du deine Browser-Daten l&ouml;schst oder eine andere Sprache w&auml;hlst.</dd>
         <dt>Empf&auml;nger</dt><dd>Keine. Local Storage bleibt auf deinem Ger&auml;t.</dd>
-        <dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch Klick auf den Toggle); &sect; 25 Abs. 2 Nr. 2 TTDSG (unbedingt erforderlich f&uuml;r den von dir aktiv gew&uuml;nschten Dienst).</dd>
+        <dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch Klick auf den Toggle); &sect; 25 Abs. 2 Nr. 2 TDDDG (vormals TTDSG; unbedingt erforderlich f&uuml;r den von dir aktiv gew&uuml;nschten Dienst).</dd>
       </dl>
       <p>Du kannst diesen Eintrag jederzeit &uuml;ber die Browser-Einstellungen l&ouml;schen (typischerweise &bdquo;Websitedaten l&ouml;schen&ldquo; oder &bdquo;Gespeicherte Daten verwalten&ldquo;).</p>
     </div>
@@ -541,7 +541,7 @@ footer {
       <p>&Uuml;berblick der Rechtsgrundlagen je Verarbeitung:</p>
       <dl>
         <dt>Hosting / Server-Logs</dt><dd>lit. f &mdash; berechtigtes Interesse am Betrieb der Website</dd>
-        <dt>Sprachwahl (nach Klick)</dt><dd>lit. a Einwilligung &middot; &sect; 25 TTDSG unbedingt erforderlich</dd>
+        <dt>Sprachwahl (nach Klick)</dt><dd>lit. a Einwilligung &middot; &sect; 25 TDDDG unbedingt erforderlich</dd>
         <dt>E-Mail-Korrespondenz</dt><dd>lit. f &mdash; berechtigtes Interesse an der Beantwortung deiner Anfrage</dd>
         <dt>App on-device-Verarbeitung</dt><dd>lit. b &mdash; Vertragserf&uuml;llung (die von dir genutzte Funktion)</dd>
         <dt>Optionaler Standort f&uuml;r Gebetszeiten</dt><dd>lit. a Einwilligung &middot; lit. b Vertragserf&uuml;llung</dd>
@@ -668,7 +668,7 @@ footer {
   btnDE.addEventListener('click', function () { setLang('de', true); });
 
   // Initial detection: ?lang= URL param > localStorage > browser locale > EN
-  // No localStorage write on auto-detect (TTDSG § 25)
+  // No localStorage write on auto-detect (TDDDG § 25)
   var urlLang = null;
   try { urlLang = new URLSearchParams(window.location.search).get('lang'); } catch (e) { /* ignore */ }
   var saved = null;
